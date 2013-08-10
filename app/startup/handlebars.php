@@ -14,17 +14,37 @@ class handlebars
 	}
 
 
+	function add_templates($path)
+	{
+		$full_path = ASSETS . '/js/' . $path;
+		$files = scandir($full_path);
+		
+		foreach($files as $file_name)
+		{
+			$bits = explode('.', $file_name);
+			if(array_pop($bits) == 'html')
+			{
+				$file_path = $path . '/' . implode($bits, '.');
+				$this->compile_template($file_path);
+			}
+		}
+	}
+
 	function add_template($path)
 	{
-		global $assets;
+		$this->compile_template($path);
+	}
 
-		$fullPath = ASSETS . '/js/' . $path . '.html';
-		if(is_file($fullPath))
+	function compile_template($file_path)
+	{
+		global $assets;
+		
+		if(is_file(ASSETS . '/js/' . $file_path . '.html'))
 		{
-			$template = addslashes(file_get_contents($fullPath));
+			$template = addslashes(file_get_contents(ASSETS . '/js/' . $file_path . '.html'));
 			$template = str_replace(array("\r\n", "\n"), '', $template);
 			
-			$assets->inject_script("templates['" . $path . "'] = Handlebars.compile('".$template."');");
+			$assets->inject_script("templates['" . $file_path . "'] = Handlebars.compile('".$template."');");
 		}
 	}
 

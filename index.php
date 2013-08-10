@@ -22,12 +22,12 @@
   define('CONTROLLERS', BASE.'/app/controllers');
   define('LAYOUTS', BASE.'/app/layouts');
   
+
 	//
 	//	Include init
 	//
 	include_once('config.php');
 	include_once('init.php');
-	
 
 
 	//

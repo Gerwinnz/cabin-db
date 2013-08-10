@@ -17,7 +17,8 @@ var cabin_db = new Class
     // Decode server state
     self.state = JSON.decode(cabin_db_state);
 
-    console.log(self.state);
+    console.log(self.state.current_user);
+    console.log(templates);
 
     // Document event app wide
     $(document.body).addEvent('click', function()

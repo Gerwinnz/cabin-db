@@ -43,10 +43,10 @@ $twig->addGlobal('assets', $assets);
 //
 if(isset($app['startup']))
 {
-	foreach($app['startup'] as $liveClass)
+	foreach($app['startup'] as $live_class)
 	{
-		include_once(STARTUP.'/'.$liveClass.'.php');
-		$$liveClass = new $liveClass();
+		include_once(STARTUP.'/'.$live_class.'.php');
+		$$live_class = new $live_class();
 	}
 }
 
