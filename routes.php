@@ -6,9 +6,7 @@
 		'db' => 'db_schema',
 		'logs' => 'logs',
 
-		// app controllers
-		'client' => 'client',
-		'server' => 'server'
+		'default' => 'db_schema'
 	);
 
 ?>

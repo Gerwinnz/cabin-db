@@ -8,15 +8,18 @@ class routes
 		global $vars, $base_route;
 		include_once(BASE.'/routes.php');
 		
-
-		foreach($routes as $route=>$rock)
+		if(isset($vars[0]))
 		{
-			if($vars[0] == $route)
+			foreach($routes as $route=>$controller)
 			{
-				$base_route = array_shift($vars);
-				return($rock);
-			}
+				if($vars[0] == $route)
+				{
+					$base_route = array_shift($vars);
+					return($controller);
+				}
+			}	
 		}
+		
 
 		// if we get here just return the last item as default
 		return(array_pop($routes));

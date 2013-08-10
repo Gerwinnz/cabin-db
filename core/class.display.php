@@ -9,14 +9,15 @@ class display
 		global $vars, $config;
 
 		// check for ajax or full request
-		if($vars[0] == 'a')
+		if(isset($vars[0]))
 		{
-			return $this->get_ajax_response();
+			if($vars[0] == 'a')
+			{
+				return $this->get_ajax_response();
+			}
 		}
-		else
-		{
-      return $this->get_full_response();
-		}
+		
+      	return $this->get_full_response();
 	}
 
 
