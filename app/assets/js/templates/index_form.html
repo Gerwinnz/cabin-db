@@ -1,0 +1,27 @@
+<div>
+
+  <div class="form-line">
+    <label>Index name</label>
+    <input type="text" id="index-name" value="" />
+  </div>
+
+  {{#columns}}
+    <div class="form-line">
+      <label>Size for '{{this}}'</label>
+      <input type="text" id="{{this}}-size" />
+    </div>
+  {{/columns}}
+
+  <div class="form-line">
+    <label>Index type</label>
+    <div class="styled-select">
+      <select id="index-type">
+        <option value="PRIMARY">Primary</option>
+        <option value="UNIQUE">Unique</option>
+        <option value="INDEX">Index</option>
+        <option value="FULLTEXT">Full text</option>
+      </select>
+    </div>
+  </div>
+
+</div>

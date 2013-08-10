@@ -1,0 +1,51 @@
+<ul class="tabs">
+  <li data-tab="tables" class="current"><i class="icon-layout"></i> Tables</li>
+  <li data-tab="users"><i class="icon-users"></i> Users</li>
+  <li data-tab="schema"><i class="icon-flow-tree"></i> Schema</li>
+  <li data-tab="options"><i class="icon-cog"></i></li>
+</ul>
+
+<ul class="panes">
+  <li id="db-tables" data-tab="tables" class="current">
+    <div class="tables-list inner">
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>Name</th>
+          <th>Rows</th>
+          <th>Type</th>
+          <th>Collation</th>
+          <th>Size</th>
+          <th style="width: 50px;"></th>
+        </tr>
+        {{#tables}}
+          <tr class="table_{{ this.TABLE_NAME }}">
+            <td><a data-table="{{ this.TABLE_NAME }}" class="table-link">{{ this.TABLE_NAME }}</a></td>
+            <td>{{ this.TABLE_ROWS }}</td>
+            <td>{{ this.ENGINE }}</td>
+            <td>{{ this.TABLE_COLLATION }}</td>
+            <td>{{ this.size }}</td>
+            <td><button data-table="{{ this.TABLE_NAME }}" class="button delete-row"><i class="icon-trash"></i></button></td>
+          </tr>
+        {{/tables}}
+        <tr>
+          <td><strong>{{ total_tables }} tables</strong></td>
+          <td><strong>{{ total_rows }} rows</strong></td>
+          <td></td>
+          <td></td>
+          <td><strong>{{ total_size }}</strong></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li id="db-users" data-tab="users">
+
+  </li>
+  <li id="db-schema" data-tab="schema">
+
+  </li>
+
+  <li id="db-options" data-tab="options">
+    
+  </li>
+</ul>

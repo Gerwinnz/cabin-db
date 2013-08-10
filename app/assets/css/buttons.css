@@ -1,0 +1,38 @@
+
+
+.button{
+	background-color: #777;
+	border: solid 1px #666;
+
+	color: #fff;
+	margin: 0px;
+	height: 34px;
+	line-height: 34px;
+	padding: 0px 10px;
+	border-radius: 2px;
+	box-shadow: inset 0px 1px 0px rgba(255,255,255,.3);
+}
+
+.button:hover{
+	background-color: #6f6f6f;
+}
+
+
+.button-small{
+	height: 28px;
+	line-height: 28px;
+}
+
+
+
+
+
+.button-primary{
+	background-color: #3498DB;
+	border: solid 1px #2980B9;
+	color: #fff;
+}
+
+.button-primary:hover{
+	background-color: #2980B9;
+}

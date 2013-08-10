@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Cabin DB</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+
+    {{ assets.add_styles('crack') }}
+    {{ handlebars.add_template('crack/templates/modal') }}
+
+    <script type="text/javascript">
+      var cabin_db_state = '{{ state }}';
+    </script>
+
+    {{ assets.get_scripts() }}
+    {{ assets.get_styles() }}
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,300' rel='stylesheet' type='text/css' />
+    <link rel="icon" href="/app/assets/images/favicon.ico" />
+	</head>
+	
+	<body>
+    <div id="ajax-loading-wrap">
+        <div id="ajax-loading">Loading&nbsp;&nbsp;&nbsp;<i class="icon-cog"></i></div>
+    </div>
+    <div id="top-bar" class="top-bar clear-fix">
+    	<div id="logo" class="logo">Cabin DB</div>
+      <div class="right">
+      </div>
+    </div>
+    <div class="content">
+    	{{ content.main }}
+    </div>
+	</body>
+</html>

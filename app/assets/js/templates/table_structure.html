@@ -1,0 +1,66 @@
+<div>
+	<table class="table table-hover table-striped">
+		<tr>
+			<th></th>
+			<th>Column</th>
+			<th>Type</th>
+			<th>Null</th>
+			<th>Default</th>
+			<th>Extra</th>
+			<th></th>
+			<th></th>
+		</tr>
+		{{#columns}}
+			<tr>
+				<td style="width: 30px;"><input id="select-{{ COLUMN_NAME}}" class="select-row" data-column="{{ COLUMN_NAME }}" type="checkbox" /></td>
+				<td>{{ COLUMN_NAME }}</td>
+				<td>{{ DATA_TYPE }}</td>
+				<td>{{ IS_NULLABLE }}</td>
+				<td>{{ COLUMN_DEFAULT }}</td>
+				<td>{{ EXTRA }}</td>
+				<td style="width: 50px;">
+					<button data-column="{{ COLUMN_NAME }}" class="button edit-column"><i class="icon-pencil"></i></button>
+				</td>
+				<td style="width: 50px;">
+					<button data-column="{{ COLUMN_NAME }}" class="button drop-column button-negative"><i class="icon-trash"></i></button>
+				</td>
+			</tr>
+		{{/columns}}
+	</table>
+
+	<div class="actions">
+		<button class="button button-small add-column"><i class="icon-plus-circled"></i> Add column</button>
+		<button class="button button-small add-index"><i class="icon-plus-circled"></i> Add index</button>
+	</div>
+
+
+	<h3>Indexes</h3>
+	<table class="table table-hover table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Unique</th>
+			<th>Packed</th>
+			<th>Column</th>
+			<th>Cardinality</th>
+			<th>Collation</th>
+			<th>Comment</th>
+			<th></th>
+		</tr>
+		{{#indexes}}
+			<tr>
+				<td>{{index_name}}</td>
+				<td>{{index_type}}</td>
+				<td>{{unique}}</td>
+				<td>{{packed}}</td>
+				<td>{{column_name}}</td>
+				<td>{{cardinality}}</td>
+				<td>{{collation}}</td>
+				<td>{{comment}}</td>
+				<td style="width: 50px;">
+					<button data-index="{{ index_name }}" class="button drop-index button-negative"><i class="icon-trash"></i></button>
+				</td>
+			</tr>
+		{{/indexes}}
+	</table>
+</div>

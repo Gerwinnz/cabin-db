@@ -1,0 +1,73 @@
+<div class="clear-fix">
+
+  <ul class="db-privileges-list">
+    {{#databases}}
+      <li class="db {{this.class}}" data-name="{{this.db_name}}">
+        <div class="name">
+          <span>{{this.db_name}}</span>
+          <i class="icon-right-open-mini"></i>
+        </div>
+        <div class="hidden-actions">
+          <a class="revoke" data-name="{{this.db_name}}">Revoke all</a>
+        </div>
+      </li>
+    {{/databases}}
+    <li class="add-database">
+      <div class="name">
+        <span>Add database</span>
+        <i class="icon-plus-circled"></i>
+      </div>
+    </li>
+  </ul>
+
+  <div class="db-privileges">
+    {{#databases}}
+    <div data-name="{{this.db_name}}" class="db-privileges-form {{this.class}} clear-fix">
+
+      <!-- Left col -->
+      <div class="privileges-form-col">
+        <div class="title">
+          <i class="icon-list"></i> Data
+        </div>
+        <table>
+          {{#this.privileges.data}}
+          <tr>
+            <td>{{{permission_checkbox}}}</td>
+            <td><label for="{{ this.name }}-field">{{ this.label }}</label></td>
+          </tr>
+          {{/this.privileges.data}}
+        </table>
+
+        <div class="title">
+          <i class="icon-user"></i> Administration
+        </div>
+        <table>
+          {{#this.privileges.administration}}
+          <tr>
+            <td>{{{permission_checkbox}}}</td>
+            <td><label for="{{ this.name }}-field">{{ this.label }}</label></td>
+          </tr>
+          {{/this.privileges.administration}}
+        </table>
+      </div>
+
+      <!-- Right col -->
+      <div class="privileges-form-col">
+        <div class="title">
+          <i class="icon-tools"></i> Structure
+        </div>
+        <table>
+          {{#this.privileges.structure}}
+          <tr>
+            <td>{{{permission_checkbox}}}</td>
+            <td><label for="{{ this.name }}-field">{{ this.label }}</label></td>
+          </tr>
+          {{/this.privileges.structure}}
+        </table>
+      </div>
+
+    </div>
+    {{/databases}}
+  </div>
+
+</div>

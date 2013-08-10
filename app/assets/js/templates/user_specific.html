@@ -1,0 +1,31 @@
+
+<div class="inner">
+
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Database</th>
+      <th>Edit</th>
+      <th>Revoke</th>
+    </tr>
+    {{#databases}}
+      <tr>
+        <td>
+          <a>
+            <i class="icon-database"></i> {{this.db_name}} 
+          <a>
+        </td>
+        <td style="width: 50px;">
+          <button data-db="{{this.db_name}}" class="button edit-row"><i class="icon-pencil"></i></button>
+        </td>
+        <td style="width: 50px;">
+          <button data-db="{{this.db_name}}" class="button delete-row"><i class="icon-trash"></i></button>
+        </td>
+      </tr>
+    {{/databases}}
+  </table>
+
+  <div class="actions">
+    <button class="button button-primary button-small add-database"><i class="icon-plus-circled"></i> Add database</button>
+  </div>
+
+</div>

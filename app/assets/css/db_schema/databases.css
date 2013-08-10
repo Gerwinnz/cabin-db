@@ -1,0 +1,12 @@
+
+.database-view{
+  padding: 20px;
+}
+
+#database-list{
+  width: 400px;
+}
+
+#database-list a{
+  cursor: pointer;
+}

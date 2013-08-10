@@ -1,0 +1,77 @@
+<div>
+
+	<div class="form-line">
+		<label>Column name</label>
+		<input type="text" id="column-name" value="{{ values.COLUMN_NAME }}" />
+	</div>
+
+	<div class="form-line">
+		<label>Type</label>
+		<div class="styled-select">
+			<select id="data-type">
+				{{#types}}
+					{{{option ../values.DATA_TYPE}}}
+				{{/types}}
+			</select>
+		</div>
+		<!-- <input type="text" id="column-name" value="{{ values.DATA_TYPE }}" /> -->
+	</div>
+
+	<div class="form-line">
+		<label>Length/Values</label>
+		<input type="text" id="length" value="{{ values.CHARACTER_MAXIMUM_LENGTH }}" />
+	</div>
+
+	<div class="form-line">
+		<label>Default</label>
+		<input type="text" id="default" value="{{ values.COLUMN_DEFAULT }}" />
+	</div>
+
+	<div class="form-line">
+		<label>Collation</label>
+		<div class="styled-select">
+			<select id="collation">
+				<option value=""></option>
+				{{#collations}}
+					{{{option ../values.COLLATION_NAME}}}
+				{{/collations}}
+			</select>
+		</div>
+	</div>
+
+	{{#if new_column}}
+		<div class="form-line">
+			<label>Index</label>
+			<div class="styled-select">
+				<select id="column-index">
+					<option value="">None</option>
+					<option value="PRIMARY">Primary</option>
+					<option value="UNIQUE">Unique</option>
+					<option value="INDEX">Index</option>
+					<option value="FULLTEXT">Full text</option>
+				</select>
+			</div>
+		</div>
+	{{/if}}
+
+	<div class="form-line">
+		<label>Attributes</label>
+		<input type="text" id="attributes" value="{{ values.COLUMN_NAME }}" />
+	</div>
+
+	<div class="form-line">
+		<table style="width:100%;">
+			<tr>
+				<td>
+					<label class="inline">Null</label>
+					<input type="checkbox" id="is-null" {{#if values.NULL}}checked="checked"{{/if}} />
+				</td>
+
+				<td>
+					<label class="inline">Auto increment</label>
+					<input type="checkbox" id="auto-increment" {{#if values.AUTO_INCREMENT}}checked="checked"{{/if}} />
+				</td>
+			</tr>
+	</div>
+
+</div>

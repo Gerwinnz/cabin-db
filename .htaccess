@@ -1,0 +1,8 @@
+# .htaccess file
+
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^(.+)$ index.php/$1 [QSA,L]

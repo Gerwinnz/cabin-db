@@ -1,0 +1,15 @@
+
+.editor-wrap{
+  padding: 3px;
+  border: solid 2px #ccc;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+#editor{
+  height: 60px;
+}
+
+#result-rows{
+  padding-top: 20px;
+}

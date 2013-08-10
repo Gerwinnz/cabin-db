@@ -1,0 +1,39 @@
+<div class="inner">
+
+	<table class="table table-striped table-hover">
+		<tr>
+			<th>Users</th>
+			<th class="center" style="width: 130px;"><i class="icon-globe"></i> Global privileges</th>
+			<th class="center" style="width: 130px;"><i class="icon-database"></i> Database privileges</th>
+			<th class="center" style="width: 130px;"><i class="icon-cog"></i> Options</th>
+			<th style="width: 50px;"></th>
+		</tr>
+
+		{{#users}}
+		  <tr class="user">
+		  	<td>
+		      <span class="name">
+		        {{ this.USER }}@<span class="host">{{ this.HOST }}</span> 
+		      </span>
+		  	</td>
+		  	<td class="center">
+		  		<a class="edit" data-type="global" data-name="{{ this.USER }}" data-host="{{ this.HOST }}">Edit</a>
+		  	</td>
+		  	<td class="center">
+		  		<a class="edit" data-type="database" data-name="{{ this.USER }}" data-host="{{ this.HOST }}">Edit</a>
+		  	</td>
+		  	<td class="center">
+		  		<a class="edit" data-type="options" data-name="{{ this.USER }}" data-host="{{ this.HOST }}">Edit</a>
+		  	</td>
+		  	<td>
+		  		<button class="button edit button-delete-row" data-type="drop" data-name="{{ this.USER }}" data-host="{{ this.HOST }}"><i class="icon-trash"></i></button>
+		  	</td>
+		  </tr>
+		{{/users}}
+	</table>
+
+	<div class="actions">
+		<button class="button button-primary button-small add-user"><i class="icon-plus-circled"></i> Add user</button>
+	</div>
+
+</div>

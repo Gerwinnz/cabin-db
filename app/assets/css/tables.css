@@ -1,0 +1,79 @@
+
+/*
+#
+#	Standard styles
+#
+*/
+table.table{
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 12px;
+}
+
+table.table tr{
+
+}
+
+table.table tr th{
+	line-height: 30px;
+	padding: 0px 5px;
+	margin: 0px;
+	border-bottom: solid 1px #ddd;
+	text-align: left;
+	font-weight: 400;
+}
+
+table.table tr td{
+	line-height: 30px;
+	padding: 0px 5px;
+	margin: 0px;
+	border-bottom: solid 1px #ddd;
+	font-weight: 300;
+
+}
+
+table.table tr .center{
+	text-align: center;
+}
+
+
+/*
+#
+#	Buttons
+#
+*/
+table.table tr td .button{
+	background: none;
+	border: 0px none;
+	color: #777;
+	cursor: pointer;
+}
+
+table.table tr td .button:hover{
+	color: #3498DB;
+}
+
+table.table tr td .button-negative{
+	color: #777;
+}
+
+table.table tr td .button-negative:hover{
+	color: #E74C3C;
+}
+
+
+/*
+#
+#	Hover fx and striped
+#
+*/
+table.table-hover tr:hover td{
+	background-color: #fafafa;
+}
+
+
+table.table-striped tr:nth-of-type(even){
+	background-color: #eee;
+}

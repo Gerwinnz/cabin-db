@@ -1,0 +1,47 @@
+
+/*
+#
+# Contains any css for the db schema view
+#
+*/
+
+#db-schema{
+  position: relative;
+}
+
+#schema-wrap{
+  margin-top: 10px;
+  position: relative;
+}
+
+.schema-table{
+  width: 260px;
+  position: absolute;
+  background-color: #fff;
+  border: solid 1px #ddd;
+  float: left;
+  margin: 0px 10px 0px 0px;
+}
+
+.schema-table.dragging{
+  box-shadow: 0px 0px 20px rgba(0,0,0,.2);
+}
+
+.schema-table .header{
+  padding: 5px;
+  cursor: move;
+  font-size: 12px;
+  background-color: #3498DB;
+  color: #fff;
+}
+
+.schema-table ul{
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+.schema-table ul li{
+  padding: 4px;
+  font-size: 11px;
+}

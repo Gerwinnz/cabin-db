@@ -1,0 +1,67 @@
+
+
+.left-pane{
+	width: 200px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	background-color: #eee;
+	border-right: solid 1px #ddd;
+	overflow: auto;
+}
+
+.content-pane{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 200px;
+	padding: 10px;
+	overflow: auto;
+}
+
+
+.left-pane a{
+	display: block;
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 0px 10px;
+	line-height: 30px;
+	height: 30px;
+	overflow: hidden;
+	border-bottom: solid 1px #ccc;
+	cursor: pointer;
+	position: relative;
+}
+
+.left-pane a span.name{
+	font-size: 12px;
+	overflow: hidden;
+	display: block;
+	width: 140px;
+
+	text-overflow: ellipsis;
+}
+
+.left-pane a span.rows{
+	font-size: 11px;
+	color: #888;
+}
+
+.left-pane a i.right{
+	float: right;
+}
+
+.left-pane a i:before{
+	line-height: 30px;
+}
+
+.left-pane a.current{
+	background-color: #e2e2e2;
+}
+
+.left-pane a:hover{
+	background-color: #e2e2e2;
+}

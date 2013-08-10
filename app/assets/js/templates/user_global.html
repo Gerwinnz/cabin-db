@@ -1,0 +1,98 @@
+
+<div class="inner">
+
+  <div class="clear-fix">
+
+    <!-- Data -->
+    <div class="options-column options-column-small">
+      <div class="options-section">
+        <div class="head">
+          <i class="icon-list"></i> Data
+        </div>
+        <div class="body">
+          <table>
+            {{#privileges.data}}
+            <tr>
+              <td>{{{permission_checkbox}}}</td>
+              <td>{{ this.label }}</td>
+            </tr>
+            {{/privileges.data}}
+          </table>
+          <div class="divide"></div>
+          <table>
+            <tr>
+              <td><input type="text" class="user-global-field" value="{{ privileges.max_questions }}" name="MAX_QUERIES_PER_HOUR"></td>
+              <td><label>Max queries per hour</label></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="user-global-field" value="{{ privileges.max_updates }}" name="MAX_UPDATES_PER_HOUR"></td>
+              <td><label>Max updates per hour</label></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="user-global-field" value="{{ privileges.max_connections }}" name="MAX_CONNECTIONS_PER_HOUR"></td>
+              <td><label>Max connections per hour</label></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="user-global-field" value="{{ privileges.max_user_connections }}" name="MAX_USER_CONNECTIONS"></td>
+              <td><label>Max user_connections per hour</label></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Restraints -->
+      <!-- <div class="options-section">
+        <div class="head">
+          <i class="icon-clipboard"></i> Resource limits
+        </div>
+        <div class="body">
+          
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Structure -->
+    <div class="options-column options-column-small">
+      <div class="options-section">
+        <div class="head">
+          <i class="icon-tools"></i> Structure
+        </div>
+        <div class="body">
+          <table>
+            {{#privileges.structure}}
+            <tr>
+              <td>{{{permission_checkbox}}}</td>
+              <td>{{ this.label }}</td>
+            </tr>
+            {{/privileges.structure}}
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Administration -->
+    <div class="options-column options-column-small">
+      <div class="options-section">
+        <div class="head">
+          <i class="icon-user"></i> Administration
+        </div>
+        <div class="body">
+          <table>
+            {{#privileges.administration}}
+            <tr>
+              <td>{{{permission_checkbox}}}</td>
+              <td>{{ this.label }}</td>
+            </tr>
+            {{/privileges.administration}}
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <button class="button button-primary save-global"><i class="icon-floppy"></i> Save global privileges</button>
+  </div>
+
+</div>

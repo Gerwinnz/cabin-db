@@ -1,0 +1,36 @@
+<div class="options-column">
+  <div class="options-section">
+    <div class="head"><h4><i class="icon-cog"></i> Options</h4></div>
+    <div class="body" id="table-options-form">
+      <div class="form-line">
+        <label>Collation</label>
+        <div class="styled-select">
+          <select id="db-collation" name="collation">
+            <option value=""></option>
+            {{#collations}}
+              {{{option ../database.collation}}}
+            {{/collations}}
+          </select>
+        </div>
+      </div>
+      <div class="form-line">
+        <button class="button button-primary save-db">
+          <i class="icon-floppy"></i> Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div><!-- end of col -->
+
+<div class="options-column">
+  <!-- <div class="options-section">
+    <div class="head"><h4><i class="icon-tools"></i> Maintenance</h4></div>
+
+  </div> -->
+  <div class="options-section">
+    <div class="head"><h4><i class="icon-trash"></i> Drop</h4></div>
+    <div class="body">
+      <button class="button button-negative drop-db"><i class="icon-attention"></i> Drop database</button>
+    </div>
+  </div>
+</div><!-- end of col -->

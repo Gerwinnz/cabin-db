@@ -1,0 +1,21 @@
+<div class="button-wrap">
+  <div class="db-dropdown">
+    
+    <div class="value db-name">
+      <div class="dropdown-toggle">
+        <i class="icon-down-dir"></i> 
+      </div>
+      {{#if current_database}}
+        <span class="db-name-label">{{ current_database }}</span>
+      {{else}}
+        Select database
+      {{/if}}
+    </div>
+    <div class="options close-me">
+      {{#databases}}
+        <div data-name="{{ this.Database }}" class="db-option">{{ this.Database }}</div>
+      {{/databases}}
+    </div>
+  </div>
+  
+</div>

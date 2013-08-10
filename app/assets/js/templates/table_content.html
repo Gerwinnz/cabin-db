@@ -1,0 +1,32 @@
+<div class="table-content">
+	{{#if show_actions}}
+		<div class="table-content-actions actions clear-fix">
+			<button class="button button-small insert-row"><i class="icon-plus-circled"></i> Insert row</button>
+			<div class="section-divide"></div>
+			<input type="text" class="small search-field" id="filter" />
+			<button class="button button-small"><i class="icon-search"></i> Search</i></button>
+		</div>
+	{{/if}}
+
+	<table class="table table-hover table-striped">
+		<tr>
+			{{#columns}}
+				<th>{{ name }}</th>
+			{{/columns}}
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+
+	{{#if no_rows}}
+		<div class="no-rows">
+			This table is empty :'(
+		</div>
+	{{/if}}
+
+	{{#if showLoadMore}}
+	<div class="actions" style="text-align:center;">
+		<button class="button button-small load-more">Load more <i class="icon-down-circled"></i></button>
+	</div>
+	{{/if}}
+</div>

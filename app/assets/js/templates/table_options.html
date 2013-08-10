@@ -1,0 +1,59 @@
+<div class="clear-fix">
+
+  <div class="options-column">
+    <div class="options-section">
+      <div class="head"><h4><i class="icon-cog"></i> Options</h4></div>
+      <div class="body" id="table-options-form">
+        <div class="form-line">
+          <label>Table name</label>
+          <input type="text" id="table-name" name="new_table_name" value="{{ TABLE_NAME }}" />
+        </div>
+        <div class="form-line">
+          <label>Comment</label>
+          <input type="text" id="table-comment" name="table_comment" value="{{ TABLE_COMMENT }}" />
+        </div>
+        <div class="form-line">
+          <label>Storage engine</label>
+          <div class="styled-select">
+            <select id="table-storage-engine" name="storage_engine">
+              {{#storage_engines}}
+                {{{option ../ENGINE}}}
+              {{/storage_engines}}
+            </select>
+          </div>
+        </div>
+        <div class="form-line">
+          <label>Collation</label>
+          <div class="styled-select">
+            <select id="table-collation" name="collation">
+              <option value=""></option>
+              {{#collations}}
+                {{{option ../TABLE_COLLATION}}}
+              {{/collations}}
+            </select>
+          </div>
+        </div>
+        <div class="form-line">
+          <button class="button button-primary save-table">
+            <i class="icon-floppy"></i> Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div><!-- end of col -->
+
+  <div class="options-column">
+    <div class="options-section">
+      <div class="head"><h4><i class="icon-tools"></i> Maintenance</h4></div>
+
+    </div>
+    <div class="options-section">
+      <div class="head"><h4><i class="icon-trash"></i> Delete</h4></div>
+      <div class="body">
+        <button class="button button-negative drop-table"><i class="icon-attention"></i> Drop table</button>
+        <button class="button button-negative delete-rows" data-rows="{{ TABLE_ROWS }}">Delete all rows</button>
+      </div>
+    </div>
+  </div><!-- end of col -->
+
+</div>

@@ -1,0 +1,72 @@
+<div class="clear-fix">
+
+  <!-- Data -->
+  <div class="privileges-form-col">
+    <div class="title">
+      <i class="icon-list"></i> Data
+    </div>
+    <table>
+      {{#privileges.data}}
+      <tr>
+        <td>{{{permission_checkbox}}}</td>
+        <td>{{ this.label }}</td>
+      </tr>
+      {{/privileges.data}}
+    </table>
+    
+    <div class="title">
+      <i class="icon-box"></i> Resource limits
+    </div>
+
+    <table>
+      <tr>
+        <td><input type="text" class="user-global-field" value="{{ privileges.max_questions }}" name="MAX_QUERIES_PER_HOUR"></td>
+        <td><label>Max queries per hour</label></td>
+      </tr>
+      <tr>
+        <td><input type="text" class="user-global-field" value="{{ privileges.max_updates }}" name="MAX_UPDATES_PER_HOUR"></td>
+        <td><label>Max updates per hour</label></td>
+      </tr>
+      <tr>
+        <td><input type="text" class="user-global-field" value="{{ privileges.max_connections }}" name="MAX_CONNECTIONS_PER_HOUR"></td>
+        <td><label>Max connections per hour</label></td>
+      </tr>
+      <tr>
+        <td><input type="text" class="user-global-field" value="{{ privileges.max_user_connections }}" name="MAX_USER_CONNECTIONS"></td>
+        <td><label>Max user_connections per hour</label></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Structure -->
+  <div class="privileges-form-col">
+    <div class="title">
+      <i class="icon-tools"></i> Structure
+    </div>
+    <table>
+      {{#privileges.structure}}
+      <tr>
+        <td>{{{permission_checkbox}}}</td>
+        <td>{{ this.label }}</td>
+      </tr>
+      {{/privileges.structure}}
+    </table>
+  </div>
+
+
+  <!-- Administration -->
+  <div class="privileges-form-col">
+    <div class="title">
+      <i class="icon-user"></i> Administration
+    </div>
+    <table>
+      {{#privileges.administration}}
+      <tr>
+        <td>{{{permission_checkbox}}}</td>
+        <td>{{ this.label }}</td>
+      </tr>
+      {{/privileges.administration}}
+    </table>
+  </div>
+
+</div>

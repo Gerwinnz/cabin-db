@@ -1,0 +1,57 @@
+
+body{
+	padding:0px;
+	margin:0px;
+	overflow: hidden;
+	background-color: #F5F5F5;
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+}
+
+strong{
+	font-weight: 400;
+}
+
+a{
+	cursor: pointer;
+}
+
+#ajax-loading-wrap{
+	position: fixed;
+	top:0px;
+	left:0px;
+	right: 0px;
+	height: 0px;
+	z-index: 20;
+}
+
+#ajax-loading{
+	width:120px;
+	height: 28px;
+	background-color: rgba(0,0,0,.6);
+	color: #fff;
+	text-align: center;
+	line-height: 28px;
+	margin: 0px auto;
+	position: relative;
+	top:-28px;
+	border-radius: 0px 0px 5px 5px;
+	font-size:13px;
+
+	transition: top 300ms;
+	-o-transition: top 300ms;
+	-moz-transition: top 300ms;
+	-webkit-transition: top 300ms;
+}
+
+#ajax-loading.display{
+	top:0px;
+}
+
+.content{
+	position: fixed;
+	top: 42px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
