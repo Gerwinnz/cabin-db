@@ -13,7 +13,8 @@
 		'startup'=>array
 		(
 			'auth',
-			'handlebars'
+			'handlebars',
+			'db_mysql'
 		),
 
 		'rocks'=>array

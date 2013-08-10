@@ -11,11 +11,11 @@ class db_users
   */
   function __construct()
   {
-    global $app, $config, $db;
+    global $app, $config, $db_mysql;
     
     if(isset($_REQUEST['db_name']))
     {
-      //$db->connect($app['db_host'], $app['db_username'], $app['db_password'], $_REQUEST['db_name']);
+      //$db_mysql->connect($app['db_host'], $app['db_username'], $app['db_password'], $_REQUEST['db_name']);
     }
   }
 

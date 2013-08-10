@@ -5,10 +5,16 @@ class db_mysql
 {
 	private $connection;
 	
+	//
+	//	Construct starts connection
+	//
+	function __construct()
+	{
+		global $app;
+		$this->connect($app['db_host'], $app['db_username'], $app['db_password'], $app['db_name']);
+	}
 
-	//
-	//	Connect
-	//
+	
 	function connect($dbhost, $dbuser, $dbpassword, $dbname)
 	{
 		$this->connection = mysqli_connect($dbhost,$dbuser,$dbpassword, $dbname);
@@ -236,3 +242,44 @@ class db_mysql
 		$this->connection->close();
 	}
 }
+
+
+
+//
+//	Add these methods to our global namespace
+//
+function select($table, $options = array())
+{
+	global $db_mysql;
+	return $db_mysql->select($table, $options);
+}
+
+
+function select_one($table, $options = array())
+{
+	global $db_mysql;
+	return $db_mysql->select_one($table, $options);
+}
+
+
+function update($table, $options = array())
+{
+	global $db_mysql;
+	return $db_mysql->update($table, $options);
+}
+
+function insert($table, $options = array())
+{
+	global $db_mysql;
+	return $db_mysql->insert($table, $options);
+}
+
+function query($sql)
+{
+	global $db_mysql;
+	return $db_mysql->do_query($sql);
+}
+
+
+
+?>
