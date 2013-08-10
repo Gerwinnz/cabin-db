@@ -51,7 +51,7 @@ var db_options = new Class
 
     // set contents
     self.$optionsWrap.removeEvents();
-    self.$optionsWrap.set('html', templates['crack/templates/db_options'](
+    self.$optionsWrap.set('html', templates['templates/db_options'](
     {
       db_name: self.dbName,
       database: database_info,

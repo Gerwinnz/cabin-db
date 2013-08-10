@@ -30,7 +30,7 @@ var index_form = new Class
   {
     var self = this;
     
-    var tem = templates['crack/templates/index_form']({columns: self.columns});
+    var tem = templates['templates/index_form']({columns: self.columns});
 
     // create the modal
     var modal = crack.modal({

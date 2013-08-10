@@ -27,7 +27,7 @@ var db_database = new Class
 	
 		// place render our shell
     $('app').empty();
-    $('app').set('html', templates['crack/templates/db_database']());
+    $('app').set('html', templates['templates/db_database']());
 
     self.$tablesPane = $('tables-pane');
     self.$contentPane = $('content-pane');
@@ -123,7 +123,7 @@ var db_database = new Class
 		});
 
 		// render
-		self.$contentPane.set('html', templates['crack/templates/database_home'](
+		self.$contentPane.set('html', templates['templates/database_home'](
 		{
 			tables: response,
 			total_tables: totalTables,
@@ -181,7 +181,7 @@ var db_database = new Class
 	renderTables: function(response)
 	{
 		var self = this;
-		self.$tablesList.set('html', templates['crack/templates/tables']({tables: response}));
+		self.$tablesList.set('html', templates['templates/tables']({tables: response}));
 	}
 
 });

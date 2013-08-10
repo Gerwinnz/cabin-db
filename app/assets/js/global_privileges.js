@@ -46,7 +46,7 @@ var global_privileges = new Class
   
     // generate the template
     var $body = new Element('div', {
-      html: templates['crack/templates/global_privileges_form']({privileges: privileges})
+      html: templates['templates/global_privileges_form']({privileges: privileges})
     });
 
     

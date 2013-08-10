@@ -52,7 +52,7 @@ var table_options = new Class
     var self = this;
     response['collations'] = crack.data.collations_array;
     response['storage_engines'] = crack.data.storage_engines;
-    self.$options.set('html', templates['crack/templates/table_options'](response));
+    self.$options.set('html', templates['templates/table_options'](response));
   },
 
   save: function()

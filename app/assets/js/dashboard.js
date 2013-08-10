@@ -13,7 +13,7 @@ var dashboard = new Class
 
     // place out schema layout into the app root container
     $('app').empty();
-    $('app').set('html', templates['crack/templates/dashboard']());
+    $('app').set('html', templates['templates/dashboard']());
 
     self.getDatabases();
 
@@ -54,7 +54,7 @@ var dashboard = new Class
     var self = this;
 
     self.$databasesList.empty();
-    self.$databasesList.set('html', templates['crack/templates/database_list']({databases: databases}));
+    self.$databasesList.set('html', templates['templates/database_list']({databases: databases}));
   },
 
   //

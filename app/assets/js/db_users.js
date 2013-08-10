@@ -59,7 +59,7 @@ var db_users = new Class
   {
     var self = this;
     var $form = new Element('div', {
-      html: templates['crack/templates/add_user_form']({})
+      html: templates['templates/add_user_form']({})
     });
 
     // draw the privileges modal
@@ -163,7 +163,7 @@ var db_users = new Class
   renderUsers: function(users)
   {
     var self = this;
-    self.$usersWrap.set('html', templates['crack/templates/users']({users: users}));
+    self.$usersWrap.set('html', templates['templates/users']({users: users}));
   }
 
 });

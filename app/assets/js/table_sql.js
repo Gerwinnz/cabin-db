@@ -41,7 +41,7 @@ var table_sql = new Class
   {
     var self = this;
     self.$el.empty();
-    self.$el.set('html', templates['crack/templates/table_sql']({table_name: self.tableName}));
+    self.$el.set('html', templates['templates/table_sql']({table_name: self.tableName}));
 
     self.editor = ace.edit("editor");
     self.editor.renderer.setShowGutter(false);
@@ -111,7 +111,7 @@ var table_sql = new Class
         noRows = true;
       }
       
-      var tem = templates['crack/templates/table_content']({
+      var tem = templates['templates/table_content']({
         columns: columns, 
         showLoadMore: showLoadMore,
         no_rows: noRows,
@@ -157,7 +157,7 @@ var table_sql = new Class
         where = 'WHERE ' + deleteChunks.join(' AND ') + ' LIMIT 1';
       }
 
-      var tem = templates['crack/templates/table_row']({columns: columns, where: where})
+      var tem = templates['templates/table_row']({columns: columns, where: where})
       var $t = new Element('tr', {html: tem});
 
       self.$contentTable.adopt($t);

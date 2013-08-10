@@ -108,7 +108,7 @@ var cabin_db = new Class
       databases: databases
     };
 
-    self.$topBar.getElement('.right').set('html', templates['crack/templates/top_bar_controls'](data));
+    self.$topBar.getElement('.right').set('html', templates['templates/top_bar_controls'](data));
     self.$dropDown = self.$topBar.getElement('.options');
   },
 

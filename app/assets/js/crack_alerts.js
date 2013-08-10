@@ -19,7 +19,7 @@ crack.alerts = {
 			detail: detail
 		};
 
-		var $el = new Element('div', {html: templates['crack/templates/alert'](data)});
+		var $el = new Element('div', {html: templates['templates/alert'](data)});
 		$('alerts-wrap').adopt($el);
 
 		var slideFx = new Fx.Slide($el, {duration: 200}).hide().slideIn();

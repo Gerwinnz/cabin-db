@@ -17,7 +17,7 @@ var table = new Class
 		self.$contentPane = $('content-pane');
 
 		// fetch the base html
-		self.$contentPane.set('html', templates['crack/templates/table']({'table_name': tableName}));
+		self.$contentPane.set('html', templates['templates/table']({'table_name': tableName}));
 
     // set new selectors
 		self.$structure = $('table_structure');
@@ -304,7 +304,7 @@ var table = new Class
         noRows = true;
       }
       
-      var tem = templates['crack/templates/table_content']({
+      var tem = templates['templates/table_content']({
         columns: columns, 
         showLoadMore: showLoadMore,
         no_rows: noRows,
@@ -350,7 +350,7 @@ var table = new Class
         where = 'WHERE ' + deleteChunks.join(' AND ') + ' LIMIT 1';
       }
 
-      var tem = templates['crack/templates/table_row']({columns: columns, where: where})
+      var tem = templates['templates/table_row']({columns: columns, where: where})
 			var $t = new Element('tr', {html: tem});
 
 			self.$contentTable.adopt($t);
@@ -380,7 +380,7 @@ var table = new Class
 	{
 		var self = this;
     self.$structure.empty();
-		self.$structure.set('html', templates['crack/templates/table_structure'](data));
+		self.$structure.set('html', templates['templates/table_structure'](data));
     self.checkSelected();
 	}
 

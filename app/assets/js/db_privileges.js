@@ -58,7 +58,7 @@ var db_privileges = new Class
   
     // generate the template
     var $body = new Element('div', {
-      html: templates['crack/templates/privileges_form']({databases: databases})
+      html: templates['templates/privileges_form']({databases: databases})
     });
 
     // some basic events
@@ -177,7 +177,7 @@ var db_privileges = new Class
       {
         var modal = crack.modal({
           head: 'Add database to ' + self.userName + '@' + self.host,
-          body: templates['crack/templates/add_database_form']({databases: response.rows}),
+          body: templates['templates/add_database_form']({databases: response.rows}),
           footer: [
             {
               type: 'button',

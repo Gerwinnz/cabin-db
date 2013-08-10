@@ -26,7 +26,7 @@ var user_options = new Class
   {
     var self = this;
     var $form = new Element('div', {
-      html: templates['crack/templates/user_options_form']({})
+      html: templates['templates/user_options_form']({})
     });
 
     // draw the privileges modal

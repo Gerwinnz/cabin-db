@@ -61,7 +61,7 @@ var db_schema = new Class
       var $tableEl = new Element('div', {
         class: 'schema-table',
         style: 'top: ' + y + 'px; left: ' + x + 'px;',
-        html: templates['crack/templates/db_schema']({table: table})
+        html: templates['templates/db_schema']({table: table})
       });
 
       // append

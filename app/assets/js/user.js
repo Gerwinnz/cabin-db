@@ -18,7 +18,7 @@ var user = new Class
     self.$contentPane = $('content-pane');
 
     // fetch the base html
-    self.$contentPane.set('html', templates['crack/templates/user']({user_name: userName}));
+    self.$contentPane.set('html', templates['templates/user']({user_name: userName}));
 
     self.$userGlobal = self.$contentPane.getElement('#user_global');
     self.$userSpecific = self.$contentPane.getElement('#user_specific');
@@ -97,7 +97,7 @@ var user = new Class
     globalPrivileges['max_updates'] = response.global_privileges.max_updates;
     globalPrivileges['max_user_connections'] = response.global_privileges.max_user_connections;
     
-    self.$userGlobal.set('html', templates['crack/templates/user_global']({privileges: globalPrivileges}));
+    self.$userGlobal.set('html', templates['templates/user_global']({privileges: globalPrivileges}));
 
     // render table of databases and resolve privileges
     var databases = [];
@@ -109,7 +109,7 @@ var user = new Class
 
       self.privileges[db.Db] = self.resolveDatabasePrivileges(db);
     });
-    self.$userSpecific.set('html', templates['crack/templates/user_specific']({databases: databases}));
+    self.$userSpecific.set('html', templates['templates/user_specific']({databases: databases}));
   },
 
 
@@ -125,7 +125,7 @@ var user = new Class
       {
         var modal = crack.modal({
           head: 'Add database to ' + self.userName + '@' + self.host,
-          body: templates['crack/templates/add_database_form']({databases: response.rows}),
+          body: templates['templates/add_database_form']({databases: response.rows}),
           footer: [
             {
               type: 'button',
@@ -164,7 +164,7 @@ var user = new Class
   editDatabasePrivileges: function(dbName)
   {
     var self = this;
-    var $template = new Element('div', {html: templates['crack/templates/privileges_form']({privileges: self.privileges[dbName]})});
+    var $template = new Element('div', {html: templates['templates/privileges_form']({privileges: self.privileges[dbName]})});
     var $checkboxes = $template.getElements('input');
 
     var modal = crack.modal({

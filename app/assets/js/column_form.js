@@ -52,7 +52,7 @@ var column_form = new Class
 		var collations = crack.data.collations_array;
 		var types = crack.data.types_array.flatten();
 
-		var tem = templates['crack/templates/edit_column']({
+		var tem = templates['templates/edit_column']({
 			values: values, 
 			types: types,
 			collations: collations,

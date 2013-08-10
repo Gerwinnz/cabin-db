@@ -9,10 +9,6 @@
 		'db_password'=>'',
 		'db_host'=>'127.0.0.1',
 		'db_name'=>'',
-
-		'last_fm_api_root'=>'http://ws.audioscrobbler.com/2.0/',
-		'last_fm_api_key'=>'d93f5bc656fdb3744a345c367271323b',
-		'last_fm_secret'=>'6b60c10f9523e27ccef66a15f36b15bd',
 		
 		'startup'=>array
 		(
@@ -34,7 +30,7 @@
 	// server/environment specific
 	$environment = array
 	(
-		'dev.tooby.co'=>array
+		'laptop.cabindb.com'=>array
 		(
 			'db_username'=>'root',
 			'db_password'=>'zoeyb33f3d',
@@ -43,7 +39,7 @@
 		),
 
 
-		'desktop.tooby.co'=>array
+		'desktop.cabindb.com'=>array
 		(
 			'db_username'=>'root',
 			'db_password'=>'',

@@ -114,7 +114,7 @@ crack.modal = function(options)
 	}
 
 	var $body = (document.body);
-	var $el = new Element('div', {html: templates['crack/templates/modal'](vals)});
+	var $el = new Element('div', {html: templates['templates/modal'](vals)});
 	var $overlay = $el.getElement('div.overlay');
 	var $modal = $el.getElement('div.modal');
 

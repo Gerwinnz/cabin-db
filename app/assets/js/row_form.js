@@ -37,7 +37,7 @@ var row_form = new Class
   {
     var self = this;
     var buttonText = where === false ? ' Insert row' : 'Save row';
-    var form = templates['crack/templates/row_form']({columns: columns});
+    var form = templates['templates/row_form']({columns: columns});
     var modal = crack.modal({
       head: 'Insert row',
       body: form,
