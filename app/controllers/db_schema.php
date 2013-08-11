@@ -37,14 +37,11 @@ class db_schema
 	//
 	function get_state()
 	{
+		global $db_auth;
+
 		$state = array();
 
-		$state['current_user'] = array
-		(
-			'user_name' => 'root',
-			'host' => 'localhost'
-		);
-
+		$state['current_user'] = $db_auth->logged_in();
 		$state['databases'] = query('SHOW DATABASES');
 
 		return json_encode($state);

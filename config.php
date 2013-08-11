@@ -12,8 +12,8 @@
 		
 		'startup'=>array
 		(
-			'auth',
 			'handlebars',
+			'db_auth',
 			'db_mysql'
 		),
 
