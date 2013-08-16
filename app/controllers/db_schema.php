@@ -11,6 +11,7 @@ class db_schema
 	{
 		global $app, $config, $db_mysql, $db_auth;
 
+		//$db_auth->log_out();
 
 		if(isset($_REQUEST['db_name']))
 		{

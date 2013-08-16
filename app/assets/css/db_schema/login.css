@@ -27,6 +27,9 @@
 	line-height: 30px;
 	padding-top: 4px;
 	float: right;
+
+	color: #ddd;
+	text-shadow: -1px -1px 0px #ccc;
 }
 
 .login-wrap .body{

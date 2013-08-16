@@ -48,7 +48,7 @@ var login = new Class
       },
       error: function(error)
       {
-        crack.alerts.new('error', 'Access denied for \'' + data['username'] + '\'@\'localhost\'');
+        crack.alerts.new('error', 'Access denied for \'' + data['db_username'] + '\'@\'localhost\'');
         $('login-username').focus();
       }
     });

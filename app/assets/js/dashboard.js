@@ -43,6 +43,9 @@ var dashboard = new Class
     crack.request('a/db_schema/get_databases', {}, {
       success: function(response)
       {
+        self.cabin_db.state.databases = response;
+        self.cabin_db.renderTopBarControls(response.rows);
+
         self.databases = response.rows;
         self.renderDatabases(response.rows);
       }
