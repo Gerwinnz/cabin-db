@@ -31,13 +31,13 @@ crack.request = function(url, data, options)
 	    	else if(jsonResponse.status === 'error')
 	    	{
 	    		// if it's a caught php error, display it
-	    		if(jsonResponse.pkg.error)
-		        {
-		          crack.alerts.new('error', jsonResponse.pkg.error, jsonResponse.pkg.file + ' - Line: ' + jsonResponse.pkg.line);
-		          console.log(jsonResponse.pkg);
-		        }
+	    		if(jsonResponse.pkg.error && !options.error)
+	        {
+	          crack.alerts.new('error', jsonResponse.pkg.error, jsonResponse.pkg.file + ' - Line: ' + jsonResponse.pkg.line);
+	          console.log(jsonResponse.pkg);
+	        }
 		        
-	        	if(options.error){
+	        if(options.error){
 		    		options.error(jsonResponse.pkg);
 		    	}
 	    	}		    	

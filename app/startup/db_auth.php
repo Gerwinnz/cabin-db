@@ -40,7 +40,6 @@ class db_auth
 	{
 		global $twig, $app;
 
-
 		// check for submitted details and log the user in
 		if(isset($_POST['user_username'], $_POST['user_password']))
 		{
@@ -70,7 +69,11 @@ class db_auth
 	{
 		global $twig;
 
-		
+		$_SESSION['current_user'] = array
+		(
+			'username' => $username,
+			'password' => $password
+		);
 	}
 
 

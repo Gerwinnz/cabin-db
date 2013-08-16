@@ -11,9 +11,19 @@ class db_mysql
 	function __construct()
 	{
 		global $app;
-		$this->connect($app['db_host'], $app['db_username'], $app['db_password'], $app['db_name']);
+
+		$this->connection = false;
+
+		if($app['db_auto_connect'] == true)
+		{
+			$this->connect($app['db_host'], $app['db_username'], $app['db_password'], $app['db_name']);
+		}
 	}
 
+	function is_connected()
+	{
+		return $this->connection == false ? false : true;
+	}
 	
 	function connect($dbhost, $dbuser, $dbpassword, $dbname)
 	{
@@ -23,7 +33,14 @@ class db_mysql
 	function query($sql)
 	{
 		// echo '<div>'.$sql.'</div>';
-		return $this->connection->query($sql);
+		if($this->connection)
+		{
+			return $this->connection->query($sql);
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	function escape($val)
@@ -66,15 +83,16 @@ class db_mysql
 		}	
 		else
 		{
-			if($this->connection->error != null)
+			if($this->connection)
 			{
-				return array(
-					'error' => $this->connection->error
-				);	
+				if($this->connection->error != null)
+				{
+					return array(
+						'error' => $this->connection->error
+					);	
+				}
 			}
 		}
-
-		return true;
 	}
 	
 	

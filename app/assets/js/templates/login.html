@@ -1,16 +1,22 @@
+<div style="padding: 10px;" id="alerts-wrap"></div>
+
 <div class="login-wrap" id="login-wrap">
-	<h2>Log in <i class="icon-key"></i></h2>
-	<form id="log-in-form" method="post" action="">
-		<div class="form-line">
-			<label>Username</label>
-			<input type="text" name="login-username"/>
-		</div>
-		<div class="form-line">
-			<label>Password</label>
-			<input type="password" name="login-password"/>
-		</div>
-		<div class="form-line">
-			<button type="submit" class="button button-primary">Log in</button>
-		</div>
-	</form>
+	<div class="head">
+		<h2><i class="icon-key"></i>Log in</h2>
+	</div>
+	<div class="body">
+		<form id="log-in-form" method="post" action="">
+			<div class="form-line">
+				<label>Username</label>
+				<input type="text" id="login-username" name="db_username"/>
+			</div>
+			<div class="form-line">
+				<label>Password</label>
+				<input type="password" id="login-password" name="db_password"/>
+			</div>
+			<div class="form-line">
+				<button type="submit" class="button button-primary">Log in</button>
+			</div>
+		</form>
+	</div>
 </div>

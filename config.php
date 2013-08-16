@@ -5,6 +5,7 @@
 	$config = array
 	(
 		'name'=>'Tooby',
+		'db_auto_connect' => false,
 		'db_username'=>'root',
 		'db_password'=>'',
 		'db_host'=>'127.0.0.1',

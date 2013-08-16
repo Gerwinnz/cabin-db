@@ -22,7 +22,35 @@ var login = new Class
     self.$loginWrap.addEvent('submit:relay(#log-in-form)', function(event, $el)
     {
       event.preventDefault();
-      crack.confirm('you wanna log in?');
+      self.logIn($el);
+    });
+
+    $('login-username').focus();
+  },
+
+
+  //
+  //  Log the user in
+  // 
+  logIn: function($form)
+  {
+    var self = this;
+
+    var data = {};
+    $form.getElements('input').each(function($input){
+      data[$input.get('name')] = $input.value;
+    });
+
+    crack.request('a/auth/log_in', data, {
+      success: function(response)
+      {
+        self.cabin_db.renderDashboard(); 
+      },
+      error: function(error)
+      {
+        crack.alerts.new('error', 'Access denied for \'' + data['username'] + '\'@\'localhost\'');
+        $('login-username').focus();
+      }
     });
   }
 

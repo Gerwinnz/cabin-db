@@ -50,7 +50,7 @@ class display
 		}
 	}
 
-	function get_ajax_error($error_number, $error_string, $error_file, $error_line, $error_context)
+	public static function get_ajax_error($error_number, $error_string, $error_file, $error_line, $error_context)
 	{
 		$error = array
 		(

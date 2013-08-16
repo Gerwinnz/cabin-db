@@ -9,11 +9,16 @@ class db_schema
 	//
 	function __construct()
 	{
-		global $app, $config, $db_mysql;
-		
+		global $app, $config, $db_mysql, $db_auth;
+
+
 		if(isset($_REQUEST['db_name']))
 		{
-			$db_mysql->connect($app['db_host'], $app['db_username'], $app['db_password'], $_REQUEST['db_name']);
+			$db_mysql->connect($app['db_host'], $db_auth->get('username'), $db_auth->get('password'), $_REQUEST['db_name']);
+		}
+		elseif($db_auth->logged_in())
+		{
+			$db_mysql->connect($app['db_host'], $db_auth->get('username'), $db_auth->get('password'), 'mysql');
 		}
 
 		layout('crack');
@@ -42,7 +47,11 @@ class db_schema
 		$state = array();
 
 		$state['current_user'] = $db_auth->logged_in();
-		$state['databases'] = query('SHOW DATABASES');
+
+		if($state['current_user'])
+		{
+			$state['databases'] = query('SHOW DATABASES');
+		}
 
 		return json_encode($state);
 	}
