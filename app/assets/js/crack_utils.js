@@ -19,6 +19,7 @@ crack.request = function(url, data, options)
 	    onSuccess: function(response) 
 	    {
 	    	$('ajax-loading').removeClass('display');
+
 	    	var jsonResponse = JSON.decode(response);
 
 	    	// check status for success or error

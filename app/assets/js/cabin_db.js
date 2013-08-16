@@ -44,10 +44,19 @@ var cabin_db = new Class
     var self = this;
   },
 
-  logOut: function()
+  logOut: function(modal)
   {
     var self = this;
     self.$topBar.getElement('.right').empty();
+
+    crack.request('a/auth/log_out', {},
+    {
+      success: function()
+      {
+        modal.close();
+        self.renderLogIn();
+      }
+    });
   },
 
 
@@ -105,8 +114,8 @@ var cabin_db = new Class
       var action = $el.get('data-action');
       if(action === 'log_out')
       {
-        crack.confirm('Are you sure you want to log out?', function(){
-          
+        crack.confirm('Are you sure you want to log out?', function(modal){
+          self.logOut(modal);
         });
       }
     });

@@ -44,7 +44,8 @@ var login = new Class
     crack.request('a/auth/log_in', data, {
       success: function(response)
       {
-        self.cabin_db.renderDashboard(); 
+        self.cabin_db.state.current_user = true;
+        self.cabin_db.renderDashboard();
       },
       error: function(error)
       {

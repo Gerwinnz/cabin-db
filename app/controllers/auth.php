@@ -39,6 +39,14 @@ class auth
   	global $db_auth;
 
   	$db_auth->log_out();
+
+    return format_response
+      (
+        array
+        (
+          'logged_in' => false
+        )
+      );
   }
 
 
