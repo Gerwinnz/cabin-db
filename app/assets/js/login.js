@@ -19,8 +19,9 @@ var login = new Class
     self.$loginWrap = $('login-wrap');
     
     // add events
-    self.$loginWrap.addEvent('click:relay(button.log-in)', function(event, $el)
+    self.$loginWrap.addEvent('submit:relay(#log-in-form)', function(event, $el)
     {
+      event.preventDefault();
       crack.confirm('you wanna log in?');
     });
   }
