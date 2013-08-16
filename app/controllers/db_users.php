@@ -11,12 +11,9 @@ class db_users
   */
   function __construct()
   {
-    global $app, $config, $db_mysql;
+    global $app, $db_mysql, $db_auth;
     
-    if(isset($_REQUEST['db_name']))
-    {
-      //$db_mysql->connect($app['db_host'], $app['db_username'], $app['db_password'], $_REQUEST['db_name']);
-    }
+    $db_mysql->connect($app['db_host'], $db_auth->get('username'), $db_auth->get('password'), 'mysql');
   }
 
 

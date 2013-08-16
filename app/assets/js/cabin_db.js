@@ -105,7 +105,8 @@ var cabin_db = new Class
     // render it
     var data = {
       current_database: dbName,
-      databases: databases
+      databases: databases,
+      logged_in: self.state.current_user
     };
 
     self.$topBar.getElement('.right').set('html', templates['templates/top_bar_controls'](data));
