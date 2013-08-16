@@ -1,5 +1,5 @@
 <div class="button-wrap">
-  <div class="db-dropdown">
+  <div class="dropdown">
     
     <div class="value db-name">
       <div class="dropdown-toggle">
@@ -8,10 +8,10 @@
       {{#if current_database}}
         <span class="db-name-label">{{ current_database }}</span>
       {{else}}
-        Select database
+        <span>Select database</span>
       {{/if}}
     </div>
-    <div class="options close-me">
+    <div class="options db-options close-me">
       {{#databases}}
         <div data-name="{{ this.Database }}" class="db-option">{{ this.Database }}</div>
       {{/databases}}
@@ -21,8 +21,13 @@
 
 {{#if logged_in}}
   <div class="button-wrap">
-    <div class="user">
-      <i class="icon-user"></i>
+    <div class="dropdown">
+      <div class="dropdown-toggle user">
+        <i class="icon-user"></i>
+      </div>
+      <div class="options user-options close-me">
+        <div data-action="log_out" class="user-option">Log out</div>
+      </div>
     </div>
   </div>
 {{/if}}

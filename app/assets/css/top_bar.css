@@ -49,6 +49,7 @@
   height: 25px;
   line-height: 30px;
   padding: 5px 5px 0px 5px;
+  cursor: pointer;
 }
 
 
@@ -82,7 +83,7 @@
 # Dropdown styles 
 #
 */
-.right .db-dropdown{
+.right .dropdown{
   float: left;
   position: relative;
   height: 30px;
@@ -92,17 +93,17 @@
   z-index: 100;
 }
 
-.db-dropdown .value{
+.right .dropdown .value{
   cursor: pointer;
   padding-left: 15px;
   border-radius: 3px;
 }
 
-.db-dropdown .db-name-label:hover{
+.right .dropdown .db-name-label:hover{
   color: rgba(255,255,255,.6);
 }
 
-.db-dropdown .options{
+.right .dropdown .options{
   position: absolute;
   top: 32px;
   right: 0px;
@@ -116,7 +117,7 @@
   display: none;
 }
 
-.db-dropdown .dropdown-toggle{
+.right .dropdown .dropdown-toggle{
   height: 23px;
   padding-top: 7px;
   width: 30px;
@@ -125,22 +126,26 @@
   display: block;
   float: right;
   border-radius: 3px;
-  margin: 0px 0px 0px 10px;
+  margin: 0px 0px 0px 0px;
 }
 
-.db-dropdown .dropdown-toggle:hover{
+.right .dropdown .dropdown-toggle:hover{
   background-color: rgba(0,0,0,.1);
 }
 
-.db-dropdown .dropdown-toggle i{
+.right .dropdown .dropdown-toggle i{
   height: 15px;
 }
 
-.db-dropdown .options.open{
+.right .dropdown .options.open{
   display: block;
 }
 
-.db-dropdown .options div{
+.right .dropdown .value span{
+  margin-right: 10px;
+}
+
+.right .dropdown .options div{
   padding: 0px 10px;
   height: 30px;
   line-height: 30px;
@@ -149,10 +154,10 @@
   cursor: pointer;
 }
 
-.db-dropdown .options div:hover{
+.right .dropdown .options div:hover{
   background-color: #eee;
 }
 
-.db-dropdown .options div:last-of-type{
+.right .dropdown .options div:last-of-type{
   border-bottom: 0;
 }

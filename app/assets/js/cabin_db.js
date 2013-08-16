@@ -79,6 +79,7 @@ var cabin_db = new Class
     // events
     self.$topBar.removeEvents();
 
+    // DB dropdown and options
     self.$topBar.addEvent('click:relay(.db-name .dropdown-toggle)', function(event, $el)
     {
       event.stopPropagation();
@@ -91,16 +92,40 @@ var cabin_db = new Class
       self.selectDatabase($el.get('data-name'));
     });
 
+    // User dropdown and options
+    self.$topBar.addEvent('click:relay(.user)', function(event, $el)
+    {
+      event.stopPropagation();
+      self.$userDropDown.toggleClass('open');
+    });
+
+    self.$topBar.addEvent('click:relay(.user-option)', function(event, $el)
+    {
+      //event.stopPropagation();
+      var action = $el.get('data-action');
+      if(action === 'log_out')
+      {
+        crack.confirm('Are you sure you want to log out?', function(){
+          
+        });
+      }
+    });
+
+    
+
+    // Select DB home
     self.$topBar.addEvent('click:relay(#logo)', function(event, $el)
     {
       self.renderDashboard();
       self.renderTopBarControls(databases);
     });
 
+    // Current DB home
     self.$topBar.addEvent('click:relay(.db-name-label)', function(event, $el)
     {
       self.renderDatabase(dbName);
     });
+
 
     // render it
     var data = {
@@ -110,7 +135,8 @@ var cabin_db = new Class
     };
 
     self.$topBar.getElement('.right').set('html', templates['templates/top_bar_controls'](data));
-    self.$dropDown = self.$topBar.getElement('.options');
+    self.$dropDown = self.$topBar.getElement('.db-options');
+    self.$userDropDown = self.$topBar.getElement('.user-options');
   },
 
   //
