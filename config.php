@@ -4,7 +4,7 @@
 	// default global config variables
 	$config = array
 	(
-		'name'=>'Tooby',
+		'name'=>'Cabin DB',
 		'db_auto_connect' => false,
 		'db_username'=>'root',
 		'db_password'=>'',
@@ -32,22 +32,7 @@
 	// server/environment specific
 	$environment = array
 	(
-		'laptop.cabindb.com'=>array
-		(
-			'db_username'=>'',
-			'db_password'=>'',
-			'db_host'=>'',
-			'db_name'=>''
-		),
-
-
-		'desktop.cabindb.com'=>array
-		(
-			'db_username'=>'',
-			'db_password'=>'',
-			'db_host'=>'localhost',
-			'db_name'=>''
-		)
+		
 	);
 
 
