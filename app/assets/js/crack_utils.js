@@ -1,6 +1,22 @@
 
 var crack = crack || {};
 
+/*
+#
+#	Our base url
+#
+*/
+crack.baseURL = '/';
+
+$(window).addEvent('domready', function(){
+	var baseTag = $$('base');
+	if(baseTag[0] !== undefined)
+	{
+		crack.baseURL = baseTag[0].get('href');
+	}
+});
+
+
 
 
 /*
@@ -10,7 +26,8 @@ var crack = crack || {};
 */
 crack.request = function(url, data, options) 
 {
-	url = '/' + url;
+	url = crack.baseURL + url;
+
 	$('ajax-loading').addClass('display');
 	var myRequest = new Request({
 	    url: url,
