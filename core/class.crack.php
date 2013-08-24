@@ -22,12 +22,12 @@ class crack
 			$piece = array_shift($self);
 			if($piece != '' && $piece != 'index.php')
 			{
-				$base_url .= '/'.$piece;
+				$base_url .= '/' . $piece;
 			}
 		}while($piece != 'index.php');
 		
 		$this->vars = $self;
-		$this->base_url = 'http://'.$base_url;
+		$this->base_url = 'http://' . $base_url . '/';
 
 		// clean each var
 		foreach($this->vars as $key => $var)
@@ -38,7 +38,7 @@ class crack
 
 	
 	//
-	//	Returns the site details
+	//	Returns the site config details
 	//
 	function get_details()
 	{
@@ -51,8 +51,8 @@ class crack
 			$config = array_merge($config, $environment[$server_name]);
 		}
 		
-		// add base url and vars
-		$config['base_url'] = $this->base_url;
+		// add base url(if auto) and vars
+		$config['base_url'] = $config['base_url'] === 'auto' ? $this->base_url : $config['base_url'];
 		$config['vars'] = $this->vars;
 
 		return $config;

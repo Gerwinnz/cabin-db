@@ -27,12 +27,13 @@ class db_schema
 
 
 	//
-	//	Return
+	//	Default end point for controller, renders our page layout etc on arrival
 	//
 	function index()
 	{
-		global $db, $output;
+		global $db, $output, $app;
 		$output->set('state', $this->get_state());
+		$output->set('base_url', $app['base_url']);
 
 		return view('db_schema/index');
 	}
@@ -46,7 +47,6 @@ class db_schema
 		global $db_auth;
 
 		$state = array();
-
 		$state['current_user'] = $db_auth->logged_in();
 
 		if($state['current_user'])

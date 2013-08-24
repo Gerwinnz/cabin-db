@@ -9,10 +9,10 @@ var crack = crack || {};
 crack.baseURL = '/';
 
 $(window).addEvent('domready', function(){
-	var baseTag = $$('base');
-	if(baseTag[0] !== undefined)
+	var baseTag = $$('base').pop();
+	if(baseTag !== undefined)
 	{
-		crack.baseURL = baseTag[0].get('href');
+		crack.baseURL = baseTag.get('href');
 	}
 });
 
@@ -21,7 +21,7 @@ $(window).addEvent('domready', function(){
 
 /*
 #
-#
+#	Ajax request wrapper method
 #
 */
 crack.request = function(url, data, options) 

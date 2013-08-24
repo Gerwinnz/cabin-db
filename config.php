@@ -10,7 +10,9 @@
 		'db_password'=>'',
 		'db_host'=>'localhost',
 		'db_name'=>'',
-		'base_url'=>'localhost/cabin-db/',
+
+		// when set to auto, we dynamically work out what it is
+		'base_url' => 'auto',
 		
 		'startup'=>array
 		(
