@@ -8,13 +8,14 @@ var crack = crack || {};
 */
 crack.baseURL = '/';
 
-$(window).addEvent('domready', function(){
+crack.init = function()
+{
 	var baseTag = $$('base').pop();
 	if(baseTag !== undefined)
 	{
 		crack.baseURL = baseTag.get('href');
 	}
-});
+};
 
 
 
@@ -27,8 +28,7 @@ $(window).addEvent('domready', function(){
 crack.request = function(url, data, options) 
 {
 	url = crack.baseURL + url;
-
-	$('ajax-loading').addClass('display');
+	
 	var myRequest = new Request({
 	    url: url,
 	    method: 'post',

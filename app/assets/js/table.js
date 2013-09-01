@@ -2,6 +2,15 @@
 var table = new Class
 ({
 	
+  //
+  //  Some shared values
+  // 
+  dbName: null,
+  tableName: null,
+  orderBy: '',
+  order: 'DESC',
+
+
 	//
 	//	Init a few things
 	//
@@ -89,6 +98,22 @@ var table = new Class
 		{
 			self.getContent(self.page);
 		});
+
+    // order by
+    self.$content.addEvent('click:relay(a.column-name)', function(event, $el)
+    {
+      var newOrderBy = $el.get('data-column')
+      if(newOrderBy === self.orderBy)
+      {
+        self.order = self.order === 'DESC' ? 'ASC' : 'DESC';  
+      }
+      else
+      {
+        self.order = 'ASC';
+      }
+      self.orderBy = newOrderBy;
+      self.getContent();
+    });
 
     // insert row
     self.$content.addEvent('click:relay(button.insert-row)', function(event, $el)
@@ -266,16 +291,25 @@ var table = new Class
 		var self = this;
 		if(page === undefined) { page = 0; }
 
-		crack.request('a/db_schema/get_table_content', {db_name: self.dbName, table_name: self.tableName, page: page}, {
-			success: function(response)
-			{
-				self.renderContent(response, page);
-			},
-      error: function(error)
+		crack.request('a/db_schema/get_table_content', 
       {
-        crack.alerts.new('error', error);
-      }
-		});
+        db_name: self.dbName, 
+        table_name: self.tableName, 
+        page: page, 
+        order_by: self.orderBy, 
+        order: self.order
+      }, 
+      {
+  			success: function(response)
+  			{
+  				self.renderContent(response, page);
+  			},
+        error: function(error)
+        {
+          crack.alerts.new('error', error);
+        }
+		  }
+    );
 	},
 
   renderContent: function(response, page)
@@ -291,7 +325,8 @@ var table = new Class
       var noRows = false;
       for(var columnName in response.rows[0])
       { 
-        columns.push({name: columnName});
+        var className = self.orderBy === columnName ? ('active-' + self.order.toLowerCase()) : '';
+        columns.push({name: columnName, class_name: className});
       }
 
       if(response.rows.length === 30)

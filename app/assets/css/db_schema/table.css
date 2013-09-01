@@ -59,7 +59,25 @@
   color: #BBB;
   text-shadow: 0px -1px 0px #fff;
   font-weight: 300;
+}
 
+
+.table-content a.active-asc{
+  color: #2980B9;
+}
+.table-content a.active-asc:after{
+  content: '\25be';
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+.table-content a.active-desc{
+  color: #2980B9; 
+}
+.table-content a.active-desc:after{
+  content: '\25b4';
+  margin-left: 5px;
+  font-size: 16px;
 }
 
 

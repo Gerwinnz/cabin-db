@@ -16,6 +16,10 @@ a{
 	cursor: pointer;
 }
 
+a:hover{
+	color: #2980B9;
+}
+
 #ajax-loading-wrap{
 	position: fixed;
 	top:0px;

@@ -175,7 +175,21 @@ class db_schema
 		$chunk = 30;
 		$start = $params['page'] * $chunk;
 
-		$result = query("SELECT * FROM " . $params['db_name'] . '.' .$params['table_name'] . " LIMIT " . $start . ", " . $chunk);
+		$sql = "SELECT * FROM " . $params['db_name'] . '.' .$params['table_name'];
+
+		// Check for order by info
+		if(isset($params['order_by']))
+		{
+			if($params['order_by'] !== '')
+			{
+				$sql .= " ORDER BY `" . $params['order_by'] . "` " . $params['order'];
+			}	
+		}
+
+		$sql .= " LIMIT " . $start . ", " . $chunk;
+
+
+		$result = query($sql);
 		if(isset($result['error']))
 		{
 			return format_response($result['error'], 'error');

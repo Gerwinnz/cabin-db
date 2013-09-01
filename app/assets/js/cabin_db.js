@@ -168,5 +168,9 @@ var cabin_db = new Class
 
 $(window).addEvent('domready', function()
 {
-  var app = new cabin_db();
+  // Init our utils 
+  crack.init();
+
+  // Create app instance
+  var app = new cabin_db();  
 });
