@@ -1,0 +1,21 @@
+<table class="table table-hover table-striped">
+	<tr>
+		{{#columns}}
+			<th><a class="column-name {{ class_name }}" data-column="{{ name }}">{{ name }}</a></th>
+		{{/columns}}
+		<th></th>
+		<th></th>
+	</tr>
+</table>
+
+{{#if no_rows}}
+	<div class="no-rows">
+		No results found :'(
+	</div>
+{{/if}}
+
+{{#if showLoadMore}}
+<div class="actions" style="text-align:center;">
+	<button class="button button-small load-more">Load more <i class="icon-down-circled"></i></button>
+</div>
+{{/if}}

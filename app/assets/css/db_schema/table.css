@@ -17,6 +17,12 @@
   height: 28px;
 }
 
+.actions .styled-select{
+  width: 140px;
+  margin-right: 10px;
+  float: left;
+}
+
 .add-index{
   display: none;
 }
@@ -41,13 +47,13 @@
   float: left;
 }
 
-#filter{
+#filter-field{
   width: 300px;
   float: left;
   border-right: 0;
 }
 
-#filter + .button{
+#filter-field + .button{
   border-radius: 0px 2px 2px 0px;
   border-left: 0;
 }

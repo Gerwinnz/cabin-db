@@ -177,6 +177,15 @@ class db_schema
 
 		$sql = "SELECT * FROM " . $params['db_name'] . '.' .$params['table_name'];
 
+		// Check for filters
+		if(isset($params['filter_query']))
+		{
+			if($params['filter_query'] != '')
+			{
+				$sql .= " WHERE `" . $params['filter_column'] . "` LIKE '%" . $params['filter_query'] . "%' ";
+			}
+		}
+
 		// Check for order by info
 		if(isset($params['order_by']))
 		{

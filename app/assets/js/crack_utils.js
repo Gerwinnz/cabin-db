@@ -28,7 +28,8 @@ crack.init = function()
 crack.request = function(url, data, options) 
 {
 	url = crack.baseURL + url;
-	
+	$('ajax-loading').addClass('display');
+
 	var myRequest = new Request({
 	    url: url,
 	    method: 'post',

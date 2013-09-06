@@ -93,3 +93,24 @@ select{
 select:focus{
 	border-color: #3498DB;
 }
+
+
+
+
+.styled-select.small{
+	width: 100%;
+	border-radius: 2px;
+	overflow: hidden;
+	background: url('images/select.png') no-repeat right #fff;
+
+	height: 28px;
+	border: solid 1px #ccc;
+
+	box-sizing: border-box; 
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.styled-select.small select{
+	height: 28px;
+}

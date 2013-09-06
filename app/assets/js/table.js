@@ -37,7 +37,7 @@ var table = new Class
     // init tabs
     var tabs = new crack_tabs(self.$contentPane.getElement('.tabs'), {
       content: function(){
-        self.getContent();
+        self.getContent(0, true);
       },
       structure: function(){
         self.getStructure();
@@ -115,6 +115,14 @@ var table = new Class
       self.getContent();
     });
 
+    // filter results
+    self.$content.addEvent('keyup:relay(#filter-field)', function(event, $el)
+    {
+      self.filterColumn = $('filter-select').value;
+      self.filterQuery = $el.value;
+      self.getContent();
+    });
+
     // insert row
     self.$content.addEvent('click:relay(button.insert-row)', function(event, $el)
     {
@@ -134,7 +142,7 @@ var table = new Class
     });
 
 		// init with the content
-		self.getContent();
+		self.getContent(0, true);
 	},
 
 
@@ -286,7 +294,7 @@ var table = new Class
 	//
 	//	Renders the table's contents
 	//
-	getContent: function(page)
+	getContent: function(page, renderControls)
 	{
 		var self = this;
 		if(page === undefined) { page = 0; }
@@ -297,12 +305,14 @@ var table = new Class
         table_name: self.tableName, 
         page: page, 
         order_by: self.orderBy, 
-        order: self.order
+        order: self.order,
+        filter_column: self.filterColumn,
+        filter_query: self.filterQuery
       }, 
       {
   			success: function(response)
   			{
-  				self.renderContent(response, page);
+  				self.renderContent(response, page, renderControls);
   			},
         error: function(error)
         {
@@ -312,14 +322,13 @@ var table = new Class
     );
 	},
 
-  renderContent: function(response, page)
+  renderContent: function(response, page, renderControls)
   {
     var self = this;
 
     // if first time, setup the table
     if(page === 0)
     {
-      self.$content.empty();
       var columns = [];
       var showLoadMore = false;
       var noRows = false;
@@ -339,14 +348,28 @@ var table = new Class
         noRows = true;
       }
       
-      var tem = templates['templates/table_content']({
+      // Don't re-render controls if we don't have to
+      if(renderControls === true)
+      {
+        self.$content.empty();
+        var tem = templates['templates/table_content']({
+          columns: columns, 
+          showLoadMore: showLoadMore,
+          no_rows: noRows,
+          show_actions: true
+        });
+
+        self.$content.set('html', tem);
+      }
+      
+      var tem = templates['templates/table_content_results']({
         columns: columns, 
         showLoadMore: showLoadMore,
         no_rows: noRows,
         show_actions: true
       });
 
-      self.$content.set('html', tem);
+      $('table-content-results').set('html', tem);
       self.$contentTable = self.$content.getElement('table');
     }
 
