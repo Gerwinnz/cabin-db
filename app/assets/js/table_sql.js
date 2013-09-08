@@ -111,7 +111,7 @@ var table_sql = new Class
         noRows = true;
       }
       
-      var tem = templates['templates/table_content']({
+      var tem = templates['templates/table_content_results']({
         columns: columns, 
         showLoadMore: showLoadMore,
         no_rows: noRows,
