@@ -271,7 +271,7 @@ class db_schema
 
 	function delete_row($params)
 	{
-		$result = query("DELETE FROM `" . $params['table_name'] . "` " . $params['where']);
+		$result = query("DELETE FROM `" . $params['table_name'] . "` " . stripslashes($params['where']));
 
 		if(is_string($result))
 		{
@@ -286,7 +286,7 @@ class db_schema
 
 	function edit_row($params)
 	{
-		$result = query("SELECT * FROM `" . $params['table_name'] . "` " . $params['where']);
+		$result = query("SELECT * FROM `" . $params['table_name'] . "` " . stripslashes($params['where']));
 
 		if(is_string($result))
 		{

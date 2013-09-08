@@ -41,7 +41,7 @@ class display
 			$controller = new $controller_name();
 			if(method_exists($controller, $action))
 			{
-				return $controller->$action($_REQUEST);	
+				return $controller->$action($this->clean_params($_REQUEST));
 			}
 			else
 			{
@@ -50,6 +50,37 @@ class display
 		}
 	}
 
+	//
+	//	Recursively cleans all params passed to it
+	//
+	function clean_params($params)
+	{
+		$cleaned = array();
+		foreach($params as $key => $value)
+		{
+			if(ini_get('magic_quotes_gpc'))
+			{
+				if(is_array($value))
+				{
+					$cleaned[$key] = $this->clean_params($value);
+				}
+				else
+				{
+					$value = stripslashes($value);
+					$cleaned[$key] = mysql_real_escape_string(strip_tags($value));
+				}
+			}
+			else
+			{
+				$cleaned[$key] = mysql_real_escape_string(strip_tags($value));
+			}
+		}
+		return $cleaned;
+	}
+
+	//
+	//	Simple enough error catch
+	//
 	public static function get_ajax_error($error_number, $error_string, $error_file, $error_line, $error_context)
 	{
 		$error = array
