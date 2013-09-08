@@ -44,11 +44,19 @@ var db_privileges = new Class
 
     // pre process our data
     var databases = [];
+
     response.each(function(db)
     {
       var currentTab = self.currentDbTab === undefined ? self.dbName : self.currentDbTab;
       var dbName = db.Db.replace(/\\_/g, '_')
-      var className = dbName === currentTab ? 'active' : '';
+      var className = '';
+
+      if(dbName === currentTab)
+      {
+        className = 'active';
+        self.currentDbTab = dbName;
+      }
+
       databases.push({
         db_name: dbName,
         class: className,
@@ -84,6 +92,17 @@ var db_privileges = new Class
         }
       });
     });
+
+    // set first form selected
+    $dbPrivileges.each(function($el)
+    {
+      if($el.get('data-name') === self.currentDbTab)
+      {
+        self.currentDbPrivilegesForm = $el;
+        $el.addClass('active');
+      }
+    });
+    
 
     $body.addEvent('click:relay(li.add-database)', function(event, $el)
     {
