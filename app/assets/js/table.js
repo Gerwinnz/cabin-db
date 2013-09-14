@@ -123,6 +123,20 @@ var table = new Class
       self.getContent();
     });
 
+    self.$content.addEvent('click:relay(button.search-button)', function(event, $el)
+    {
+      self.filterColumn = $('filter-select').value;
+      self.filterQuery = $('filter-field').value;
+      self.getContent();
+    });
+
+    self.$content.addEvent('change:relay(#filter-select)', function(event, $el)
+    {
+      self.filterColumn = $('filter-select').value;
+      self.filterQuery = $('filter-field').value;
+      self.getContent();
+    });
+
     // insert row
     self.$content.addEvent('click:relay(button.insert-row)', function(event, $el)
     {
