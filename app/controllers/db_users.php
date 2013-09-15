@@ -80,6 +80,25 @@ class db_users
 
 
 
+
+
+  /*
+  #
+  # Returns a list of all the users
+  #
+  */
+  function get_existing_users($params)
+  {
+    $result = query("SELECT * FROM mysql.user");
+    $existing_users = $result['rows'];
+
+    return format_response($existing_users);
+  }
+
+
+
+
+
   /*
   #
   # Creates a new user with privileges to the current db
@@ -145,6 +164,8 @@ class db_users
   }
 
 
+
+  
 
 
   /*
@@ -323,7 +344,14 @@ class db_users
     }
     else
     {
-      return $this->get_database_privileges($params);
+      if($params['response'] === 'get')
+      {
+        return $this->get($params);
+      }
+      else
+      {
+        return $this->get_database_privileges($params);
+      }
     }
   }
 

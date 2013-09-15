@@ -1,0 +1,10 @@
+<div class="form-line">
+	<label>User</label>
+	<div class="styled-select">
+		<select id="existing-users-field">
+			{{#users}}
+				<option>{{ User }}@{{ Host }}</option>
+			{{/users}}
+		</select>
+	</div>
+</div>

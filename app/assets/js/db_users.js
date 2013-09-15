@@ -49,6 +49,70 @@ var db_users = new Class
     {
       self.renderAddUser();
     });
+
+    self.$usersWrap.addEvent('click:relay(button.grant-existing-user)', function(event, $el)
+    {
+      self.renderGrantUser();
+    });
+  },
+
+
+  //
+  //  Grant user modal
+  //
+  renderGrantUser: function()
+  {
+    var self = this;
+    crack.request('a/db_users/get_existing_users', {}, {
+      success: function(response)
+      {
+        var modal = crack.modal({
+          head: 'Grant existing user',
+          body: templates['templates/add_existing_user_form']({users: response}),
+          footer: [
+            {
+              type: 'button',
+              html: '<i class="icon-plus-circled"></i> Grant privileges',
+              class: 'button button-primary',
+              events: {
+                click: function(){
+                  var user = $('existing-users-field').value;
+                  self.grantUserPrivileges(user, modal);
+                }
+              }
+            }
+          ]
+        });
+      },
+      error: function(error)
+      {
+        crack.alerts.new('error', error);
+      }
+    });
+  },
+
+  grantUserPrivileges: function(user, modal)
+  {
+    var self = this;
+    var userData = user.split('@');
+    var data = {
+      db_name: self.dbName, 
+      user_name: userData[0], 
+      host: userData[1],
+      response: 'get'
+    };
+
+    crack.request('a/db_users/add_database', data, {
+      success: function(response)
+      {
+        modal.close();
+        self.renderUsers(response);
+      },
+      error: function(error)
+      {
+        crack.alerts.new('error', error);
+      }
+    });
   },
 
 
