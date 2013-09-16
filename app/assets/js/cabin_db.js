@@ -49,7 +49,7 @@ var cabin_db = new Class
     var self = this;
     self.$topBar.getElement('.right').empty();
 
-    crack.request('a/auth/log_out', {},
+    cabin.request('a/auth/log_out', {},
     {
       success: function()
       {
@@ -114,7 +114,7 @@ var cabin_db = new Class
       var action = $el.get('data-action');
       if(action === 'log_out')
       {
-        crack.confirm('Are you sure you want to log out?', function(modal){
+        cabin.confirm('Are you sure you want to log out?', function(modal){
           self.logOut(modal);
         });
       }
@@ -169,7 +169,7 @@ var cabin_db = new Class
 $(window).addEvent('domready', function()
 {
   // Init our utils 
-  crack.init();
+  cabin.init();
 
   // Create app instance
   var app = new cabin_db();  

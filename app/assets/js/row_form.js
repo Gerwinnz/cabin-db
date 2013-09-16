@@ -12,7 +12,7 @@ var row_form = new Class
     if(where === false)
     {
       // get the table cols, insert
-      crack.request('a/db_schema/get_table_columns', {db_name: dbName, table_name: tableName}, {
+      cabin.request('a/db_schema/get_table_columns', {db_name: dbName, table_name: tableName}, {
         success: function(response)
         {
           self.renderForm(response, where);
@@ -22,7 +22,7 @@ var row_form = new Class
     else
     {
       // get the cols for a specific row and its values
-      crack.request('a/db_schema/edit_row', {db_name: dbName, table_name: tableName, where: where}, 
+      cabin.request('a/db_schema/edit_row', {db_name: dbName, table_name: tableName, where: where}, 
       {
         success: function(response)
         {
@@ -38,7 +38,7 @@ var row_form = new Class
     var self = this;
     var buttonText = where === false ? ' Insert row' : 'Save row';
     var form = templates['templates/row_form']({columns: columns});
-    var modal = crack.modal({
+    var modal = cabin.modal({
       head: 'Insert row',
       body: form,
       footer: [
@@ -79,7 +79,7 @@ var row_form = new Class
       data['columns'][$field.get('data-name')] = $field.value;
     });
 
-    crack.request('a/db_schema/save_row', data, {
+    cabin.request('a/db_schema/save_row', data, {
       success: function(response)
       {
         if(self.callback !== undefined)
@@ -91,7 +91,7 @@ var row_form = new Class
       error: function(error)
       {
         modal.close();
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   }

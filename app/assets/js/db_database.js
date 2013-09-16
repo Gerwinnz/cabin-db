@@ -57,7 +57,7 @@ var db_database = new Class
 	newTable: function()
 	{
 		var self = this;
-		var modal = crack.modal({
+		var modal = cabin.modal({
 			head: 'New table',
 			body: '<input type="text" id="new-table-name-field" />',
 			footer: [
@@ -70,7 +70,7 @@ var db_database = new Class
 							var tableName = $('new-table-name-field').value;
 							if(tableName !== '')
 							{
-								crack.request('a/db_schema/add_table', {table_name: tableName, db_name: self.dbName}, {
+								cabin.request('a/db_schema/add_table', {table_name: tableName, db_name: self.dbName}, {
 									success: function(response)
 									{
 										self.renderTables(response);
@@ -92,7 +92,7 @@ var db_database = new Class
 	getTables: function(fullView)
 	{
 		var self = this;
-		crack.request('a/db_schema/get_tables', {db_name: self.dbName}, {
+		cabin.request('a/db_schema/get_tables', {db_name: self.dbName}, {
 			success: function(response)
 			{
 				if(fullView)
@@ -119,7 +119,7 @@ var db_database = new Class
 			totalRows = totalRows + parseInt(table.TABLE_ROWS);
 			totalSize = totalSize + parseInt(table.DATA_LENGTH);
 
-			table.size = crack.readableBytes(table.DATA_LENGTH);
+			table.size = cabin.readableBytes(table.DATA_LENGTH);
 		});
 
 		// render
@@ -128,7 +128,7 @@ var db_database = new Class
 			tables: response,
 			total_tables: totalTables,
 			total_rows: totalRows,
-			total_size: crack.readableBytes(totalSize),
+			total_size: cabin.readableBytes(totalSize),
 			db_name: self.dbName
 		}));
 
@@ -137,7 +137,7 @@ var db_database = new Class
 
 
 		// init tabs
-    var tabs = new crack_tabs(self.$contentPane.getElement('.tabs'), {
+    var tabs = new cabin_tabs(self.$contentPane.getElement('.tabs'), {
       tables: function(){
         
       },
@@ -163,12 +163,12 @@ var db_database = new Class
 		self.$tablesListDetailed.addEvent('click:relay(button.delete-row)', function(event, $el)
 		{
 			var tableName = $el.get('data-table');
-			crack.confirm('Are you sure you want to DROP ' + tableName + '?', function(modal)
+			cabin.confirm('Are you sure you want to DROP ' + tableName + '?', function(modal)
 	    {
-	      crack.request('a/db_schema/drop_table', {db_name: self.dbName, table_name: tableName}, {
+	      cabin.request('a/db_schema/drop_table', {db_name: self.dbName, table_name: tableName}, {
 	        success: function(response)
 	        {
-	          crack.alerts.new('success', response);
+	          cabin.alerts.new('success', response);
 	           $$('#tables-list a.table_' + tableName).destroy();
 	           self.$tablesListDetailed.getElement('tr.table_' + tableName).destroy();
 	           modal.close();

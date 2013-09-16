@@ -1,19 +1,19 @@
 
-var crack = crack || {};
+var cabin = cabin || {};
 
 /*
 #
 #	Our base url
 #
 */
-crack.baseURL = '/';
+cabin.baseURL = '/';
 
-crack.init = function()
+cabin.init = function()
 {
 	var baseTag = $$('base').pop();
 	if(baseTag !== undefined)
 	{
-		crack.baseURL = baseTag.get('href');
+		cabin.baseURL = baseTag.get('href');
 	}
 };
 
@@ -25,9 +25,9 @@ crack.init = function()
 #	Ajax request wrapper method
 #
 */
-crack.request = function(url, data, options) 
+cabin.request = function(url, data, options) 
 {
-	url = crack.baseURL + url;
+	url = cabin.baseURL + url;
 	$('ajax-loading').addClass('display');
 
 	var myRequest = new Request({
@@ -52,7 +52,7 @@ crack.request = function(url, data, options)
 	    		// if it's a caught php error, display it
 	    		if(jsonResponse.pkg.error && !options.error)
 	        {
-	          crack.alerts.new('error', jsonResponse.pkg.error, jsonResponse.pkg.file + ' - Line: ' + jsonResponse.pkg.line);
+	          cabin.alerts.new('error', jsonResponse.pkg.error, jsonResponse.pkg.file + ' - Line: ' + jsonResponse.pkg.line);
 	          console.log(jsonResponse.pkg);
 	        }
 		        
@@ -72,7 +72,7 @@ crack.request = function(url, data, options)
 #
 #
 */
-crack.pluralize = function(string, number)
+cabin.pluralize = function(string, number)
 {
 	return number === 1 ? string : string + 's';
 }
@@ -85,7 +85,7 @@ crack.pluralize = function(string, number)
 #
 #
 */
-crack.readableBytes = function(bytes) 
+cabin.readableBytes = function(bytes) 
 {
 	bytes = parseInt(bytes);
 	if(bytes === 0){ return 0; }
@@ -102,7 +102,7 @@ crack.readableBytes = function(bytes)
 #
 #
 */
-crack.defer = function(callback)
+cabin.defer = function(callback)
 {
 	setTimeout(callback, 0);
 };
@@ -116,7 +116,7 @@ crack.defer = function(callback)
 #
 #
 */
-crack.modal = function(options)
+cabin.modal = function(options)
 {
 	var vals = {};
 	if(options.head){ vals.head = options.head }
@@ -169,7 +169,7 @@ crack.modal = function(options)
 	$body.adopt($el);
 
 	// open this sucker
-	crack.defer(function(){
+	cabin.defer(function(){
 		$modal.addClass('open');
 	});
 
@@ -202,9 +202,9 @@ crack.modal = function(options)
 
 
 
-crack.confirm = function(message, success)
+cabin.confirm = function(message, success)
 {
-	var modal = crack.modal({
+	var modal = cabin.modal({
 		head: 'Confirm',
 		body: message,
 		footer: [

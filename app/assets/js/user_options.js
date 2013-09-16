@@ -30,7 +30,7 @@ var user_options = new Class
     });
 
     // draw the privileges modal
-    var modal = crack.modal({
+    var modal = cabin.modal({
       head: 'Edit user',
       body: $form,
       footer: [
@@ -64,15 +64,15 @@ var user_options = new Class
       data[$input.name] = $input.value;
     });
 
-    crack.request('a/db_users/save_user_options', data, {
+    cabin.request('a/db_users/save_user_options', data, {
       success: function(response)
       {
-        crack.alerts.new('success', response);
+        cabin.alerts.new('success', response);
         modal.close();
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
         modal.close();
       }
     });

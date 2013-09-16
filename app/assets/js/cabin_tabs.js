@@ -1,5 +1,5 @@
 
-var crack_tabs = new Class
+var cabin_tabs = new Class
 ({
 	
 	//

@@ -1,7 +1,7 @@
-var crack = crack || {};
-crack.data = crack.data || {};
+var cabin = cabin || {};
+cabin.data = cabin.data || {};
 
-crack.data.storage_engines = [
+cabin.data.storage_engines = [
   { value: 'MYISAM', title: 'MyISAM' },
   { value: 'INNODB', title: 'InnoDB' },
   { value: 'CSV', title: 'CSV' },

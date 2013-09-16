@@ -1,7 +1,7 @@
-var crack = crack || {};
-crack.data = crack.data || {};
+var cabin = cabin || {};
+cabin.data = cabin.data || {};
 
-crack.data.types = {
+cabin.data.types = {
 	INT: 					'INT',
 	VARCHAR: 				'VARCHAR',
 	TEXT: 					'TEXT',
@@ -66,7 +66,7 @@ crack.data.types = {
 };
 
 
-crack.data.types_array = [
+cabin.data.types_array = [
 	'INT',
 	'VARCHAR',
 	'TEXT',

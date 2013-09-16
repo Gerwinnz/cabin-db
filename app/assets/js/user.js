@@ -25,7 +25,7 @@ var user = new Class
     self.$userOptions = self.$contentPane.getElement('#user_options');
 
     // init tabs
-    var tabs = new crack_tabs(self.$contentPane.getElement('.tabs'), {
+    var tabs = new cabin_tabs(self.$contentPane.getElement('.tabs'), {
       global: function(){
         
       },
@@ -71,14 +71,14 @@ var user = new Class
   getUser: function()
   {
     var self = this;
-    crack.request('a/db_users/get_user', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/db_users/get_user', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         self.renderUser(response);
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -120,10 +120,10 @@ var user = new Class
   {
     var self = this;
 
-    crack.request('a/db_schema/get_databases', {}, {
+    cabin.request('a/db_schema/get_databases', {}, {
       success: function(response)
       {
-        var modal = crack.modal({
+        var modal = cabin.modal({
           head: 'Add database to ' + self.userName + '@' + self.host,
           body: templates['templates/add_database_form']({databases: response.rows}),
           footer: [
@@ -146,7 +146,7 @@ var user = new Class
   addDatabase: function(dbName, modal)
   {
     var self = this;
-    crack.request('a/db_users/add_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/db_users/add_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         modal.close();
@@ -167,7 +167,7 @@ var user = new Class
     var $template = new Element('div', {html: templates['templates/privileges_form']({privileges: self.privileges[dbName]})});
     var $checkboxes = $template.getElements('input');
 
-    var modal = crack.modal({
+    var modal = cabin.modal({
       width: 580,
       head: 'Privileges for ' + self.userName + '@' + self.host + ' on ' + dbName,
       body: $template,
@@ -184,7 +184,7 @@ var user = new Class
                 data[$checkbox.get('name')] = $checkbox.checked;
               });
               
-              crack.request('a/db_users/save_privileges', data, {
+              cabin.request('a/db_users/save_privileges', data, {
                 success: function(response)
                 {
                   modal.close();
@@ -192,7 +192,7 @@ var user = new Class
                 },
                 error: function(error)
                 {
-                  crack.alerts.new('error', error);
+                  cabin.alerts.new('error', error);
                 }
               });
             }
@@ -205,9 +205,9 @@ var user = new Class
   revokeDatabasePrivileges: function(dbName, modal)
   {
     var self = this;
-    crack.confirm('Are you sure you want to REVOKE all permissions for ' + self.userName + '@' + self.host + ' on ' + dbName + '?', function(modal)
+    cabin.confirm('Are you sure you want to REVOKE all permissions for ' + self.userName + '@' + self.host + ' on ' + dbName + '?', function(modal)
     {
-      crack.request('a/db_users/revoke_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
+      cabin.request('a/db_users/revoke_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
         success: function(response)
         {
           modal.close();
@@ -215,7 +215,7 @@ var user = new Class
         },
         error: function(error)
         {
-          crack.alerts.new('error', error);
+          cabin.alerts.new('error', error);
         }
       }); 
     });
@@ -243,14 +243,14 @@ var user = new Class
       }
     });
 
-    crack.request('a/db_users/save_global_privileges', data, {
+    cabin.request('a/db_users/save_global_privileges', data, {
       success: function(response)
       {
         self.renderUser(response);
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     }); 
   },

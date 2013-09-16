@@ -35,7 +35,7 @@ var table = new Class
     self.page = 0;
 
     // init tabs
-    var tabs = new crack_tabs(self.$contentPane.getElement('.tabs'), {
+    var tabs = new cabin_tabs(self.$contentPane.getElement('.tabs'), {
       content: function(){
         self.getContent(0, true);
       },
@@ -60,7 +60,7 @@ var table = new Class
   	//	Drop column
 		self.$structure.addEvent('click:relay(button.drop-column)', function(event, $el)
 		{
-			crack.confirm('Are you sure you want to drop column \'' + $el.get('data-column') + '\' from \'' + tableName + '\'?', function(modal){
+			cabin.confirm('Are you sure you want to drop column \'' + $el.get('data-column') + '\' from \'' + tableName + '\'?', function(modal){
 				self.dropColumn($el.get('data-column'), modal);
 			});
 		});
@@ -80,7 +80,7 @@ var table = new Class
     // Drop index
     self.$structure.addEvent('click:relay(button.drop-index)', function(event, $el)
     {
-      crack.confirm('Are you sure you want to drop index \'' + $el.get('data-index') + '\' from \'' + tableName + '\'?', function(modal){
+      cabin.confirm('Are you sure you want to drop index \'' + $el.get('data-index') + '\' from \'' + tableName + '\'?', function(modal){
         self.dropIndex($el, modal);
       });
     });
@@ -182,7 +182,7 @@ var table = new Class
   dropColumn: function(columnName, modal)
   {
   	var self = this;
-  	crack.request('a/db_schema/drop_column', {db_name: self.dbName, table_name: self.tableName, column_name: columnName}, {
+  	cabin.request('a/db_schema/drop_column', {db_name: self.dbName, table_name: self.tableName, column_name: columnName}, {
   		success: function(response)
   		{
   			self.renderStructure(response);
@@ -218,9 +218,9 @@ var table = new Class
     var self = this;
     var where = $el.getPrevious().get('text');
 
-    crack.confirm('Are you sure you want to delete this row?<div style="padding-top:10px;">DELETE FROM `' + self.tableName + '` ' + where + '</div>', function(modal)
+    cabin.confirm('Are you sure you want to delete this row?<div style="padding-top:10px;">DELETE FROM `' + self.tableName + '` ' + where + '</div>', function(modal)
     {
-      crack.request('a/db_schema/delete_row', {db_name: self.dbName, table_name: self.tableName, where: where}, 
+      cabin.request('a/db_schema/delete_row', {db_name: self.dbName, table_name: self.tableName, where: where}, 
       {
         success: function(response)
         {
@@ -230,7 +230,7 @@ var table = new Class
         error: function(error)
         {
           modal.close();
-          crack.alerts.new('error', error);
+          cabin.alerts.new('error', error);
         }
       });
     });
@@ -252,7 +252,7 @@ var table = new Class
   {
     var self = this;
     
-    crack.request('a/db_schema/drop_index', {db_name: self.dbName, table_name: self.tableName, index_name: $el.get('data-index')}, {
+    cabin.request('a/db_schema/drop_index', {db_name: self.dbName, table_name: self.tableName, index_name: $el.get('data-index')}, {
       success: function(response)
       {
         self.renderStructure(response);
@@ -261,7 +261,7 @@ var table = new Class
       error: function(error)
       {
         modal.close();
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -313,7 +313,7 @@ var table = new Class
 		var self = this;
 		if(page === undefined) { page = 0; }
 
-		crack.request('a/db_schema/get_table_content', 
+		cabin.request('a/db_schema/get_table_content', 
       {
         db_name: self.dbName, 
         table_name: self.tableName, 
@@ -330,7 +330,7 @@ var table = new Class
   			},
         error: function(error)
         {
-          crack.alerts.new('error', error);
+          cabin.alerts.new('error', error);
         }
 		  }
     );
@@ -439,7 +439,7 @@ var table = new Class
 	getStructure: function()
 	{
 		var self = this;
-		crack.request('a/db_schema/get_table_structure', {db_name: self.dbName, table_name: self.tableName}, {
+		cabin.request('a/db_schema/get_table_structure', {db_name: self.dbName, table_name: self.tableName}, {
 			success: function(response)
 			{
        	self.renderStructure(response);

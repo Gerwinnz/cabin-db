@@ -41,7 +41,7 @@ var login = new Class
       data[$input.get('name')] = $input.value;
     });
 
-    crack.request('a/auth/log_in', data, {
+    cabin.request('a/auth/log_in', data, {
       success: function(response)
       {
         self.cabin_db.state.current_user = true;
@@ -49,7 +49,7 @@ var login = new Class
       },
       error: function(error)
       {
-        crack.alerts.new('error', 'Access denied for \'' + data['db_username'] + '\'@\'localhost\'');
+        cabin.alerts.new('error', 'Access denied for \'' + data['db_username'] + '\'@\'localhost\'');
         $('login-username').focus();
       }
     });

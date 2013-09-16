@@ -1,7 +1,7 @@
-var crack = crack || {};
-crack.data = crack.data || {};
+var cabin = cabin || {};
+cabin.data = cabin.data || {};
 
-crack.data.collations = {
+cabin.data.collations = {
 	armscii8_bin: { value: 'armscii8_bin', title: 'Armenian, Binary' }, 
 	armscii8_general_ci: { value: 'armscii8_general_ci', title: 'Armenian, case-insensitive' }, 
 	ascii_bin: { value: 'ascii_bin', title: 'West European (multilingual), Binary' }, 
@@ -139,7 +139,7 @@ crack.data.collations = {
 
 
 
-crack.data.collations_array = [
+cabin.data.collations_array = [
 	{ value: 'armscii8_bin', title: 'Armenian, Binary' }, 
 	{ value: 'armscii8_general_ci', title: 'Armenian, case-insensitive' }, 
 	{ value: 'ascii_bin', title: 'West European (multilingual), Binary' }, 

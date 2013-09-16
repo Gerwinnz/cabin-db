@@ -57,7 +57,7 @@ var table_sql = new Class
   {
     var self = this;
 
-    crack.request('a/db_schema/do_sql', {db_name: self.dbName, sql: sql, page: self.page}, 
+    cabin.request('a/db_schema/do_sql', {db_name: self.dbName, sql: sql, page: self.page}, 
     {
       success: function(response)
       {
@@ -66,18 +66,18 @@ var table_sql = new Class
           if(self.page === 0)
           {
             self.$content.empty();
-            crack.alerts.new('success', 'Fetched ' + response.rows_affected + ' rows in ' + response.time.toFixed(5) + ' seconds.');
+            cabin.alerts.new('success', 'Fetched ' + response.rows_affected + ' rows in ' + response.time.toFixed(5) + ' seconds.');
           }
           self.renderContent(response, self.page);
         }
         else
         {
-          crack.alerts.new('success', 'Success: ' + response.rows_affected + ' ' + crack.pluralize('row', response.rows_affected) + ' affected. Query took ' + response.time.toFixed(5) + ' seconds.');
+          cabin.alerts.new('success', 'Success: ' + response.rows_affected + ' ' + cabin.pluralize('row', response.rows_affected) + ' affected. Query took ' + response.time.toFixed(5) + ' seconds.');
         }
       }, 
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },

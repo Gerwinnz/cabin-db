@@ -33,7 +33,7 @@ var index_form = new Class
     var tem = templates['templates/index_form']({columns: self.columns});
 
     // create the modal
-    var modal = crack.modal({
+    var modal = cabin.modal({
       head: 'Add index',
       body: tem,
       footer: [
@@ -73,7 +73,7 @@ var index_form = new Class
       data[column_name + '_size'] = $(column_name + '-size').value;
     });
     
-    crack.request('a/db_schema/add_index', data, {
+    cabin.request('a/db_schema/add_index', data, {
       success: function(response)
       {
         if(self.callback !== undefined)
@@ -85,7 +85,7 @@ var index_form = new Class
       error: function(error)
       {
         modal.close();
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   }

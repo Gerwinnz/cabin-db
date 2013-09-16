@@ -26,14 +26,14 @@ var global_privileges = new Class
   getPrivileges: function()
   {
     var self = this;
-    crack.request('a/db_users/get_global_privileges', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/db_users/get_global_privileges', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         self.renderPrivileges(response);
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -51,7 +51,7 @@ var global_privileges = new Class
 
     
     // draw the privileges modal
-    self.modal = crack.modal({
+    self.modal = cabin.modal({
       width: 860,
       head: 'Global privileges for ' + self.userName + '@' + self.host,
       body: $body,
@@ -89,14 +89,14 @@ var global_privileges = new Class
       }
     });
 
-    crack.request('a/db_users/save_global_privileges', data, {
+    cabin.request('a/db_users/save_global_privileges', data, {
       success: function(response)
       {
         self.modal.close();
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
         self.modal.close();
       }
     }); 

@@ -1,5 +1,5 @@
 
-var crack = crack || {};
+var cabin = cabin || {};
 
 
 /*
@@ -7,7 +7,7 @@ var crack = crack || {};
 #	Crack alerts
 #
 */
-crack.alerts = {
+cabin.alerts = {
 	
 	new: function(type, title, detail)
 	{

@@ -26,14 +26,14 @@ var db_privileges = new Class
   getPrivileges: function()
   {
     var self = this;
-    crack.request('a/db_users/get_database_privileges', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/db_users/get_database_privileges', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         self.renderPrivileges(response);
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -116,7 +116,7 @@ var db_privileges = new Class
     });
 
     // draw the privileges modal
-    self.modal = crack.modal({
+    self.modal = cabin.modal({
       width: 780,
       head: 'Database specific privileges for ' + self.userName + '@' + self.host,
       body: $body,
@@ -153,14 +153,14 @@ var db_privileges = new Class
     });
     
 
-    crack.request('a/db_users/save_privileges', data, {
+    cabin.request('a/db_users/save_privileges', data, {
       success: function(response)
       {
         
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -171,7 +171,7 @@ var db_privileges = new Class
   {
     var self = this;
 
-    crack.request('a/db_users/revoke_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/db_users/revoke_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         self.currentDbTab = undefined;
@@ -191,10 +191,10 @@ var db_privileges = new Class
   {
     var self = this;
 
-    crack.request('a/db_schema/get_databases', {}, {
+    cabin.request('a/db_schema/get_databases', {}, {
       success: function(response)
       {
-        var modal = crack.modal({
+        var modal = cabin.modal({
           head: 'Add database to ' + self.userName + '@' + self.host,
           body: templates['templates/add_database_form']({databases: response.rows}),
           footer: [
@@ -217,7 +217,7 @@ var db_privileges = new Class
   addDatabase: function(dbName, modal)
   {
     var self = this;
-    crack.request('a/db_users/add_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/db_users/add_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         modal.close();
@@ -226,7 +226,7 @@ var db_privileges = new Class
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },

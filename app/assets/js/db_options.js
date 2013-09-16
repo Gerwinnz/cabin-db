@@ -28,14 +28,14 @@ var db_options = new Class
   {
     var self = this;
 
-    crack.request('a/db_schema/get_database_info', {db_name: self.dbName}, {
+    cabin.request('a/db_schema/get_database_info', {db_name: self.dbName}, {
       success: function(response)
       {
         self.renderOptions(response);
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
     
@@ -55,12 +55,12 @@ var db_options = new Class
     {
       db_name: self.dbName,
       database: database_info,
-      collations: crack.data.collations_array
+      collations: cabin.data.collations_array
     }));
 
     self.$optionsWrap.addEvent('click:relay(button.drop-db)', function(event, $el)
     {
-      crack.confirm('Are you sure you want to DROP ' + self.dbName + '?', function(modal){
+      cabin.confirm('Are you sure you want to DROP ' + self.dbName + '?', function(modal){
         self.dropDatabase(modal);
       });
     });
@@ -79,7 +79,7 @@ var db_options = new Class
   saveOptions: function()
   {
     var self = this;
-    crack.request('a/db_schema/save_database', 
+    cabin.request('a/db_schema/save_database', 
       {
         db_name: self.dbName, 
         collation: $('db-collation').value 
@@ -87,11 +87,11 @@ var db_options = new Class
       {
         success: function(response)
         {
-          crack.alerts.new('success', 'Options for \'' + self.dbName + '\' succesfully saved.');
+          cabin.alerts.new('success', 'Options for \'' + self.dbName + '\' succesfully saved.');
         },
         error: function(error)
         {
-          crack.alerts.new('error', error);
+          cabin.alerts.new('error', error);
         }
       }
     );
@@ -105,19 +105,19 @@ var db_options = new Class
   dropDatabase: function(modal)
   {
     var self = this;
-    crack.request('a/db_schema/drop_database', {db_name: self.dbName}, {
+    cabin.request('a/db_schema/drop_database', {db_name: self.dbName}, {
       success: function(response)
       {
         self.cabin_db.renderTopBarControls(self.cabin_db.state.databases.rows);
         self.cabin_db.renderDashboard();
-        crack.alerts.new('success', 'Succesfully DROPPED \'' + self.dbName + '\'');
+        cabin.alerts.new('success', 'Succesfully DROPPED \'' + self.dbName + '\'');
         modal.close();
       },
       error: function(error)
       {
         self.cabin_db.renderTopBarControls(self.cabin_db.state.databases.rows);
         self.cabin_db.renderDashboard();
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
         modal.close();
       }
     });

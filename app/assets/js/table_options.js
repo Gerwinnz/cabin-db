@@ -39,7 +39,7 @@ var table_options = new Class
   getInfo: function()
   {
     var self = this;
-    crack.request('a/db_schema/get_table_options', {db_name: self.dbName, table_name: self.tableName}, {
+    cabin.request('a/db_schema/get_table_options', {db_name: self.dbName, table_name: self.tableName}, {
       success: function(response)
       {
         self.renderOptions(response);
@@ -50,8 +50,8 @@ var table_options = new Class
   renderOptions: function(response)
   {
     var self = this;
-    response['collations'] = crack.data.collations_array;
-    response['storage_engines'] = crack.data.storage_engines;
+    response['collations'] = cabin.data.collations_array;
+    response['storage_engines'] = cabin.data.storage_engines;
     self.$options.set('html', templates['templates/table_options'](response));
   },
 
@@ -65,10 +65,10 @@ var table_options = new Class
       data[$input.get('name')] = $input.value;
     });
 
-    crack.request('a/db_schema/save_table_options', data, {
+    cabin.request('a/db_schema/save_table_options', data, {
       success: function(sql)
       {
-        crack.alerts.new('success', 'Table succesfully altered', sql);
+        cabin.alerts.new('success', 'Table succesfully altered', sql);
         if(data.table_name !== data.new_table_name)
         {
           var $tableTab = $$('#tables-list a.current');
@@ -78,7 +78,7 @@ var table_options = new Class
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -90,12 +90,12 @@ var table_options = new Class
   drop: function()
   {
     var self = this;
-    crack.confirm('Are you sure you want to DROP ' + self.tableName + '?', function(modal)
+    cabin.confirm('Are you sure you want to DROP ' + self.tableName + '?', function(modal)
     {
-      crack.request('a/db_schema/drop_table', {db_name: self.dbName, table_name: self.tableName}, {
+      cabin.request('a/db_schema/drop_table', {db_name: self.dbName, table_name: self.tableName}, {
         success: function(response)
         {
-          crack.alerts.new('success', response);
+          cabin.alerts.new('success', response);
            $$('#tables-list a.current').destroy();
            modal.close();
         }
@@ -107,12 +107,12 @@ var table_options = new Class
   {
     var self = this;
     var row_count = $button.get('data-rows');
-    crack.confirm('Are you sure you want to delete all ' + row_count + ' rows from ' + self.tableName + '?', function()
+    cabin.confirm('Are you sure you want to delete all ' + row_count + ' rows from ' + self.tableName + '?', function()
     {
-      crack.request('a/db_schema/delete_table_rows', {db_name: self.dbName, table_name: self.tableName}, {
+      cabin.request('a/db_schema/delete_table_rows', {db_name: self.dbName, table_name: self.tableName}, {
         success: function(response)
         {
-          crack.alerts.new('success', response);
+          cabin.alerts.new('success', response);
           $$('#tables-list a.current .rows').set('text', '(0)');
         }
       });

@@ -26,14 +26,14 @@ var db_schema = new Class
   getTables: function()
   {
     var self = this;
-    crack.request('a/db_schema/get_tables', {db_name: self.dbName, get_table_cols: true}, {
+    cabin.request('a/db_schema/get_tables', {db_name: self.dbName, get_table_cols: true}, {
       success: function(response)
       {
         self.renderSchema(response);
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },

@@ -63,10 +63,10 @@ var db_users = new Class
   renderGrantUser: function()
   {
     var self = this;
-    crack.request('a/db_users/get_existing_users', {}, {
+    cabin.request('a/db_users/get_existing_users', {}, {
       success: function(response)
       {
-        var modal = crack.modal({
+        var modal = cabin.modal({
           head: 'Grant existing user',
           body: templates['templates/add_existing_user_form']({users: response}),
           footer: [
@@ -86,7 +86,7 @@ var db_users = new Class
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -102,7 +102,7 @@ var db_users = new Class
       response: 'get'
     };
 
-    crack.request('a/db_users/add_database', data, {
+    cabin.request('a/db_users/add_database', data, {
       success: function(response)
       {
         modal.close();
@@ -110,7 +110,7 @@ var db_users = new Class
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -127,7 +127,7 @@ var db_users = new Class
     });
 
     // draw the privileges modal
-    var modal = crack.modal({
+    var modal = cabin.modal({
       head: 'Create user',
       body: $form,
       footer: [
@@ -158,7 +158,7 @@ var db_users = new Class
       data[$input.name] = $input.value;
     });
 
-    crack.request('a/db_users/add_user', data, {
+    cabin.request('a/db_users/add_user', data, {
       success: function(response)
       {
         self.renderUsers(response);
@@ -167,7 +167,7 @@ var db_users = new Class
       error: function(error)
       {
         modal.close();
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },
@@ -187,9 +187,9 @@ var db_users = new Class
       host: host
     };
 
-    crack.confirm('Are you sure you want to DROP user \'' + userName + '\'@\'' + host + '\'?', function(modal)
+    cabin.confirm('Are you sure you want to DROP user \'' + userName + '\'@\'' + host + '\'?', function(modal)
     {
-      crack.request('a/db_users/drop_user', data, {
+      cabin.request('a/db_users/drop_user', data, {
       success: function(response)
         {
           modal.close();
@@ -198,7 +198,7 @@ var db_users = new Class
         error: function(error)
         {
           modal.close();
-          crack.alerts.new('error', error);
+          cabin.alerts.new('error', error);
         }
       });
     });
@@ -211,7 +211,7 @@ var db_users = new Class
   getUsers: function()
   {
     var self = this;
-    crack.request('a/db_users/get', {db_name: self.dbName}, {
+    cabin.request('a/db_users/get', {db_name: self.dbName}, {
       success: function(response)
       {
         //self.renderLayout();
@@ -219,7 +219,7 @@ var db_users = new Class
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
       }
     });
   },

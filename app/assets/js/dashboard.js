@@ -40,7 +40,7 @@ var dashboard = new Class
   getDatabases: function()
   {
     var self = this;
-    crack.request('a/db_schema/get_databases', {}, {
+    cabin.request('a/db_schema/get_databases', {}, {
       success: function(response)
       {
         self.cabin_db.state.databases = response;
@@ -66,7 +66,7 @@ var dashboard = new Class
   newDatabase: function()
   {
     var self = this;
-    var modal = crack.modal({
+    var modal = cabin.modal({
       head: 'Create new database',
       body: '<div class="formline"><label>Database name</label><input type="text" id="db-name-field" /></div>',
       footer: [
@@ -94,7 +94,7 @@ var dashboard = new Class
       return false;
     }
 
-    crack.request('a/db_schema/create_database', {new_db_name: dbName}, {
+    cabin.request('a/db_schema/create_database', {new_db_name: dbName}, {
       success: function(data)
       {
          // update the db state and go to new db
@@ -106,7 +106,7 @@ var dashboard = new Class
       },
       error: function(error)
       {
-        crack.alerts.new('error', error);
+        cabin.alerts.new('error', error);
         modal.close();
       }
     })
