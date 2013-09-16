@@ -22,7 +22,7 @@ class db_schema
 			$db_mysql->connect($app['db_host'], $db_auth->get('username'), $db_auth->get('password'), 'mysql');
 		}
 
-		layout('crack');
+		layout('cabin');
 	}
 
 

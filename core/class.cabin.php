@@ -1,7 +1,7 @@
 <?php
 
 
-class crack
+class cabin
 {
 
 	public $base_url = false;

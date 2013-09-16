@@ -2,7 +2,7 @@
 
 	$routes = array
 	(
-		// crack helper controllers
+		// cabin helper controllers
 		'db' => 'db_schema',
 		'logs' => 'logs',
 

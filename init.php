@@ -5,7 +5,7 @@
 //	Include core
 //
 include_once('core/Twig/Autoloader.php');
-include_once('core/class.crack.php');
+include_once('core/class.cabin.php');
 include_once('core/class.output.php');
 include_once('core/class.assets.php');
 include_once('core/class.display.php');
@@ -20,8 +20,8 @@ include_once('core/func.display.php');
 //
 //	Define globals
 //
-$crack = new crack();
-$app = $crack->get_details();
+$cabin = new cabin();
+$app = $cabin->get_details();
 $vars = $app['vars'];
 $base_route = '';
 
