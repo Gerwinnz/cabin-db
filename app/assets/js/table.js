@@ -9,6 +9,8 @@ var table = new Class
   tableName: null,
   orderBy: '',
   order: 'DESC',
+  filterColumn: '',
+  filterQuery: '',
 
 
 	//

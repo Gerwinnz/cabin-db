@@ -43,12 +43,12 @@ class cabin
 	function get_details()
 	{
 		global $config, $environment;
-		$server_name = $_SERVER['SERVER_NAME'];
+		$host_name = gethostname();
 		
 		// merge environment settings into the default config
-		if(isset($environment[$server_name]))
+		if(isset($environment[$host_name]))
 		{
-			$config = array_merge($config, $environment[$server_name]);
+			$config = array_merge($config, $environment[$host_name]);
 		}
 		
 		// add base url(if auto) and vars
