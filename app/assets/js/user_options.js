@@ -64,7 +64,7 @@ var user_options = new Class
       data[$input.name] = $input.value;
     });
 
-    cabin.request('a/db_users/save_user_options', data, {
+    cabin.request('a/api/v1/db_users/save_user_options', data, {
       success: function(response)
       {
         cabin.alerts.new('success', response);

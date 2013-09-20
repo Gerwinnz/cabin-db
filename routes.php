@@ -6,7 +6,7 @@
 		'db' => 'db_schema',
 		'logs' => 'logs',
 
-		'default' => 'db_schema'
+		'default' => 'app'
 	);
 
 ?>

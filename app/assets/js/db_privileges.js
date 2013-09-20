@@ -26,7 +26,7 @@ var db_privileges = new Class
   getPrivileges: function()
   {
     var self = this;
-    cabin.request('a/db_users/get_database_privileges', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/api/v1/db_users/get_database_privileges', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         self.renderPrivileges(response);
@@ -153,7 +153,7 @@ var db_privileges = new Class
     });
     
 
-    cabin.request('a/db_users/save_privileges', data, {
+    cabin.request('a/api/v1/db_users/save_privileges', data, {
       success: function(response)
       {
         
@@ -171,7 +171,7 @@ var db_privileges = new Class
   {
     var self = this;
 
-    cabin.request('a/db_users/revoke_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/api/v1/db_users/revoke_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         self.currentDbTab = undefined;
@@ -191,7 +191,7 @@ var db_privileges = new Class
   {
     var self = this;
 
-    cabin.request('a/db_schema/get_databases', {}, {
+    cabin.request('a/api/v1/db_schema/get_databases', {}, {
       success: function(response)
       {
         var modal = cabin.modal({
@@ -217,7 +217,7 @@ var db_privileges = new Class
   addDatabase: function(dbName, modal)
   {
     var self = this;
-    cabin.request('a/db_users/add_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/api/v1/db_users/add_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         modal.close();

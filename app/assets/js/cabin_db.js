@@ -49,7 +49,7 @@ var cabin_db = new Class
     var self = this;
     self.$topBar.getElement('.right').empty();
 
-    cabin.request('a/auth/log_out', {},
+    cabin.request('a/api/v1/auth/log_out', {},
     {
       success: function()
       {

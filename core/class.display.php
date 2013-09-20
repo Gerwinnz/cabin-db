@@ -17,7 +17,7 @@ class display
 			}
 		}
 		
-      	return $this->get_full_response();
+    return $this->get_full_response();
 	}
 
 
@@ -30,18 +30,31 @@ class display
 		
 		set_error_handler("display::get_ajax_error");
 
-		$controller_name = clean($vars[1]);
-		$action = clean($vars[2]);
+		// pull the end point and controller name from the requested url
+		$end_point = clean(array_pop($vars));
+		$controller_name = clean(array_pop($vars));
+
+		// remove first item and form the controller location path
+		array_shift($vars);
+
+		$path = implode('/', $vars);
+
+		
+		if($path != '')
+		{
+			$path .= '/';
+		}
 
 		// include and execute controller
-		$controller_path = CONTROLLERS.'/'.$controller_name.'.php';
+		$controller_path = CONTROLLERS . '/' . $path . $controller_name . '.php';
+
 		if(file_exists($controller_path))
 		{
 			include_once($controller_path);
 			$controller = new $controller_name();
-			if(method_exists($controller, $action))
+			if(method_exists($controller, $end_point))
 			{
-				return $controller->$action($this->clean_params($_REQUEST));
+				return $controller->$end_point($this->clean_params($_REQUEST));
 			}
 			else
 			{

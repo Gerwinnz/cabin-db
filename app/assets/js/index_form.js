@@ -73,7 +73,7 @@ var index_form = new Class
       data[column_name + '_size'] = $(column_name + '-size').value;
     });
     
-    cabin.request('a/db_schema/add_index', data, {
+    cabin.request('a/api/v1/db_schema/add_index', data, {
       success: function(response)
       {
         if(self.callback !== undefined)

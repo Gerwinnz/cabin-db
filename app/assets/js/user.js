@@ -71,7 +71,7 @@ var user = new Class
   getUser: function()
   {
     var self = this;
-    cabin.request('a/db_users/get_user', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/api/v1/db_users/get_user', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         self.renderUser(response);
@@ -120,7 +120,7 @@ var user = new Class
   {
     var self = this;
 
-    cabin.request('a/db_schema/get_databases', {}, {
+    cabin.request('a/api/v1/db_schema/get_databases', {}, {
       success: function(response)
       {
         var modal = cabin.modal({
@@ -146,7 +146,7 @@ var user = new Class
   addDatabase: function(dbName, modal)
   {
     var self = this;
-    cabin.request('a/db_users/add_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/api/v1/db_users/add_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         modal.close();
@@ -184,7 +184,7 @@ var user = new Class
                 data[$checkbox.get('name')] = $checkbox.checked;
               });
               
-              cabin.request('a/db_users/save_privileges', data, {
+              cabin.request('a/api/v1/db_users/save_privileges', data, {
                 success: function(response)
                 {
                   modal.close();
@@ -207,7 +207,7 @@ var user = new Class
     var self = this;
     cabin.confirm('Are you sure you want to REVOKE all permissions for ' + self.userName + '@' + self.host + ' on ' + dbName + '?', function(modal)
     {
-      cabin.request('a/db_users/revoke_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
+      cabin.request('a/api/v1/db_users/revoke_database', {db_name: dbName, user_name: self.userName, host: self.host}, {
         success: function(response)
         {
           modal.close();
@@ -243,7 +243,7 @@ var user = new Class
       }
     });
 
-    cabin.request('a/db_users/save_global_privileges', data, {
+    cabin.request('a/api/v1/db_users/save_global_privileges', data, {
       success: function(response)
       {
         self.renderUser(response);

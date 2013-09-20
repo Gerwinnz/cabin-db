@@ -43,7 +43,8 @@ cabin.request = function(url, data, options)
 	    	// check status for success or error
 	    	if(jsonResponse.status === 'success')
 	    	{
-	    		if(options.success){
+	    		if(options.success)
+	    		{
 		    		options.success(jsonResponse.pkg);
 		    	}
 	    	}
@@ -56,7 +57,8 @@ cabin.request = function(url, data, options)
 	          console.log(jsonResponse.pkg);
 	        }
 		        
-	        if(options.error){
+	        if(options.error)
+	        {
 		    		options.error(jsonResponse.pkg);
 		    	}
 	    	}		    	

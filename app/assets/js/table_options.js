@@ -39,7 +39,7 @@ var table_options = new Class
   getInfo: function()
   {
     var self = this;
-    cabin.request('a/db_schema/get_table_options', {db_name: self.dbName, table_name: self.tableName}, {
+    cabin.request('a/api/v1/db_schema/get_table_options', {db_name: self.dbName, table_name: self.tableName}, {
       success: function(response)
       {
         self.renderOptions(response);
@@ -65,7 +65,7 @@ var table_options = new Class
       data[$input.get('name')] = $input.value;
     });
 
-    cabin.request('a/db_schema/save_table_options', data, {
+    cabin.request('a/api/v1/db_schema/save_table_options', data, {
       success: function(sql)
       {
         cabin.alerts.new('success', 'Table succesfully altered', sql);
@@ -92,7 +92,7 @@ var table_options = new Class
     var self = this;
     cabin.confirm('Are you sure you want to DROP ' + self.tableName + '?', function(modal)
     {
-      cabin.request('a/db_schema/drop_table', {db_name: self.dbName, table_name: self.tableName}, {
+      cabin.request('a/api/v1/db_schema/drop_table', {db_name: self.dbName, table_name: self.tableName}, {
         success: function(response)
         {
           cabin.alerts.new('success', response);
@@ -109,7 +109,7 @@ var table_options = new Class
     var row_count = $button.get('data-rows');
     cabin.confirm('Are you sure you want to delete all ' + row_count + ' rows from ' + self.tableName + '?', function()
     {
-      cabin.request('a/db_schema/delete_table_rows', {db_name: self.dbName, table_name: self.tableName}, {
+      cabin.request('a/api/v1/db_schema/delete_table_rows', {db_name: self.dbName, table_name: self.tableName}, {
         success: function(response)
         {
           cabin.alerts.new('success', response);

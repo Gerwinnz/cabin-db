@@ -12,7 +12,7 @@ var row_form = new Class
     if(where === false)
     {
       // get the table cols, insert
-      cabin.request('a/db_schema/get_table_columns', {db_name: dbName, table_name: tableName}, {
+      cabin.request('a/api/v1/db_schema/get_table_columns', {db_name: dbName, table_name: tableName}, {
         success: function(response)
         {
           self.renderForm(response, where);
@@ -22,7 +22,7 @@ var row_form = new Class
     else
     {
       // get the cols for a specific row and its values
-      cabin.request('a/db_schema/edit_row', {db_name: dbName, table_name: tableName, where: where}, 
+      cabin.request('a/api/v1/db_schema/edit_row', {db_name: dbName, table_name: tableName, where: where}, 
       {
         success: function(response)
         {
@@ -79,7 +79,7 @@ var row_form = new Class
       data['columns'][$field.get('data-name')] = $field.value;
     });
 
-    cabin.request('a/db_schema/save_row', data, {
+    cabin.request('a/api/v1/db_schema/save_row', data, {
       success: function(response)
       {
         if(self.callback !== undefined)

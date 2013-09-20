@@ -40,7 +40,7 @@ var dashboard = new Class
   getDatabases: function()
   {
     var self = this;
-    cabin.request('a/db_schema/get_databases', {}, {
+    cabin.request('a/api/v1/db_schema/get_databases', {}, {
       success: function(response)
       {
         self.cabin_db.state.databases = response;
@@ -94,7 +94,7 @@ var dashboard = new Class
       return false;
     }
 
-    cabin.request('a/db_schema/create_database', {new_db_name: dbName}, {
+    cabin.request('a/api/v1/db_schema/create_database', {new_db_name: dbName}, {
       success: function(data)
       {
          // update the db state and go to new db

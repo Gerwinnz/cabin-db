@@ -26,7 +26,7 @@ var db_schema = new Class
   getTables: function()
   {
     var self = this;
-    cabin.request('a/db_schema/get_tables', {db_name: self.dbName, get_table_cols: true}, {
+    cabin.request('a/api/v1/db_schema/get_tables', {db_name: self.dbName, get_table_cols: true}, {
       success: function(response)
       {
         self.renderSchema(response);

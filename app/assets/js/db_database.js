@@ -70,7 +70,7 @@ var db_database = new Class
 							var tableName = $('new-table-name-field').value;
 							if(tableName !== '')
 							{
-								cabin.request('a/db_schema/add_table', {table_name: tableName, db_name: self.dbName}, {
+								cabin.request('a/api/v1/db_schema/add_table', {table_name: tableName, db_name: self.dbName}, {
 									success: function(response)
 									{
 										self.renderTables(response);
@@ -92,7 +92,7 @@ var db_database = new Class
 	getTables: function(fullView)
 	{
 		var self = this;
-		cabin.request('a/db_schema/get_tables', {db_name: self.dbName}, {
+		cabin.request('a/api/v1/db_schema/get_tables', {db_name: self.dbName}, {
 			success: function(response)
 			{
 				if(fullView)
@@ -165,7 +165,7 @@ var db_database = new Class
 			var tableName = $el.get('data-table');
 			cabin.confirm('Are you sure you want to DROP ' + tableName + '?', function(modal)
 	    {
-	      cabin.request('a/db_schema/drop_table', {db_name: self.dbName, table_name: tableName}, {
+	      cabin.request('a/api/v1/db_schema/drop_table', {db_name: self.dbName, table_name: tableName}, {
 	        success: function(response)
 	        {
 	          cabin.alerts.new('success', response);

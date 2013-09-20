@@ -184,7 +184,7 @@ var table = new Class
   dropColumn: function(columnName, modal)
   {
   	var self = this;
-  	cabin.request('a/db_schema/drop_column', {db_name: self.dbName, table_name: self.tableName, column_name: columnName}, {
+  	cabin.request('a/api/v1/db_schema/drop_column', {db_name: self.dbName, table_name: self.tableName, column_name: columnName}, {
   		success: function(response)
   		{
   			self.renderStructure(response);
@@ -222,7 +222,7 @@ var table = new Class
 
     cabin.confirm('Are you sure you want to delete this row?<div style="padding-top:10px;">DELETE FROM `' + self.tableName + '` ' + where + '</div>', function(modal)
     {
-      cabin.request('a/db_schema/delete_row', {db_name: self.dbName, table_name: self.tableName, where: where}, 
+      cabin.request('a/api/v1/db_schema/delete_row', {db_name: self.dbName, table_name: self.tableName, where: where}, 
       {
         success: function(response)
         {
@@ -254,7 +254,7 @@ var table = new Class
   {
     var self = this;
     
-    cabin.request('a/db_schema/drop_index', {db_name: self.dbName, table_name: self.tableName, index_name: $el.get('data-index')}, {
+    cabin.request('a/api/v1/db_schema/drop_index', {db_name: self.dbName, table_name: self.tableName, index_name: $el.get('data-index')}, {
       success: function(response)
       {
         self.renderStructure(response);
@@ -315,7 +315,7 @@ var table = new Class
 		var self = this;
 		if(page === undefined) { page = 0; }
 
-		cabin.request('a/db_schema/get_table_content', 
+		cabin.request('a/api/v1/db_schema/get_table_content', 
       {
         db_name: self.dbName, 
         table_name: self.tableName, 
@@ -441,7 +441,7 @@ var table = new Class
 	getStructure: function()
 	{
 		var self = this;
-		cabin.request('a/db_schema/get_table_structure', {db_name: self.dbName, table_name: self.tableName}, {
+		cabin.request('a/api/v1/db_schema/get_table_structure', {db_name: self.dbName, table_name: self.tableName}, {
 			success: function(response)
 			{
        	self.renderStructure(response);

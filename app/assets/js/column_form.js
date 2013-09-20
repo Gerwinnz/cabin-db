@@ -107,7 +107,7 @@ var column_form = new Class
 	addColumn: function(data, modal)
 	{
 		var self = this;
-		cabin.request('a/db_schema/add_column', data, {
+		cabin.request('a/api/v1/db_schema/add_column', data, {
 			success: function(response)
 			{
 				if(self.callback !== undefined)
@@ -127,7 +127,7 @@ var column_form = new Class
 	saveColumn: function(data, modal)
 	{
 		var self = this;
-		cabin.request('a/db_schema/save_column', data, {
+		cabin.request('a/api/v1/db_schema/save_column', data, {
 			success: function(response)
 			{
 				if(self.callback !== undefined)
@@ -152,7 +152,7 @@ var column_form = new Class
 	getColumnDetails: function(columnName)
 	{
 		var self = this;
-		cabin.request('a/db_schema/get_column_details', {db_name: self.dbName, table_name: self.tableName, column: columnName}, {
+		cabin.request('a/api/v1/db_schema/get_column_details', {db_name: self.dbName, table_name: self.tableName, column: columnName}, {
 			success: function(response)
 			{
 				self.renderForm(response);

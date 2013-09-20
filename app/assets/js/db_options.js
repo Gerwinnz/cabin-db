@@ -28,7 +28,7 @@ var db_options = new Class
   {
     var self = this;
 
-    cabin.request('a/db_schema/get_database_info', {db_name: self.dbName}, {
+    cabin.request('a/api/v1/db_schema/get_database_info', {db_name: self.dbName}, {
       success: function(response)
       {
         self.renderOptions(response);
@@ -79,7 +79,7 @@ var db_options = new Class
   saveOptions: function()
   {
     var self = this;
-    cabin.request('a/db_schema/save_database', 
+    cabin.request('a/api/v1/db_schema/save_database', 
       {
         db_name: self.dbName, 
         collation: $('db-collation').value 
@@ -105,7 +105,7 @@ var db_options = new Class
   dropDatabase: function(modal)
   {
     var self = this;
-    cabin.request('a/db_schema/drop_database', {db_name: self.dbName}, {
+    cabin.request('a/api/v1/db_schema/drop_database', {db_name: self.dbName}, {
       success: function(response)
       {
         self.cabin_db.renderTopBarControls(self.cabin_db.state.databases.rows);

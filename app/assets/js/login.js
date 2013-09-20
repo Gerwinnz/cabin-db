@@ -41,7 +41,7 @@ var login = new Class
       data[$input.get('name')] = $input.value;
     });
 
-    cabin.request('a/auth/log_in', data, {
+    cabin.request('a/api/v1/auth/log_in', data, {
       success: function(response)
       {
         self.cabin_db.state.current_user = true;

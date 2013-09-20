@@ -63,7 +63,7 @@ var db_users = new Class
   renderGrantUser: function()
   {
     var self = this;
-    cabin.request('a/db_users/get_existing_users', {}, {
+    cabin.request('a/api/v1/db_users/get_existing_users', {}, {
       success: function(response)
       {
         var modal = cabin.modal({
@@ -102,7 +102,7 @@ var db_users = new Class
       response: 'get'
     };
 
-    cabin.request('a/db_users/add_database', data, {
+    cabin.request('a/api/v1/db_users/add_database', data, {
       success: function(response)
       {
         modal.close();
@@ -158,7 +158,7 @@ var db_users = new Class
       data[$input.name] = $input.value;
     });
 
-    cabin.request('a/db_users/add_user', data, {
+    cabin.request('a/api/v1/db_users/add_user', data, {
       success: function(response)
       {
         self.renderUsers(response);
@@ -189,7 +189,7 @@ var db_users = new Class
 
     cabin.confirm('Are you sure you want to DROP user \'' + userName + '\'@\'' + host + '\'?', function(modal)
     {
-      cabin.request('a/db_users/drop_user', data, {
+      cabin.request('a/api/v1/db_users/drop_user', data, {
       success: function(response)
         {
           modal.close();
@@ -211,7 +211,7 @@ var db_users = new Class
   getUsers: function()
   {
     var self = this;
-    cabin.request('a/db_users/get', {db_name: self.dbName}, {
+    cabin.request('a/api/v1/db_users/get', {db_name: self.dbName}, {
       success: function(response)
       {
         //self.renderLayout();

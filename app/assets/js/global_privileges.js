@@ -26,7 +26,7 @@ var global_privileges = new Class
   getPrivileges: function()
   {
     var self = this;
-    cabin.request('a/db_users/get_global_privileges', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
+    cabin.request('a/api/v1/db_users/get_global_privileges', {db_name: self.dbName, user_name: self.userName, host: self.host}, {
       success: function(response)
       {
         self.renderPrivileges(response);
@@ -89,7 +89,7 @@ var global_privileges = new Class
       }
     });
 
-    cabin.request('a/db_users/save_global_privileges', data, {
+    cabin.request('a/api/v1/db_users/save_global_privileges', data, {
       success: function(response)
       {
         self.modal.close();

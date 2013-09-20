@@ -57,7 +57,7 @@ var table_sql = new Class
   {
     var self = this;
 
-    cabin.request('a/db_schema/do_sql', {db_name: self.dbName, sql: sql, page: self.page}, 
+    cabin.request('a/api/v1/db_schema/do_sql', {db_name: self.dbName, sql: sql, page: self.page}, 
     {
       success: function(response)
       {
