@@ -32,7 +32,7 @@ class cabin
 		// clean each var
 		foreach($this->vars as $key => $var)
 		{
-			$this->vars[$key] = clean($this->vars[$key]);
+			$this->vars[$key] = $this->vars[$key];
 		}
 	}
 
