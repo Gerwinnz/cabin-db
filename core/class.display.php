@@ -85,7 +85,14 @@ class display
 			}
 			else
 			{
-				$cleaned[$key] = mysql_real_escape_string(strip_tags($value));
+				if(is_array($value))
+				{
+					$cleaned[$key] = $this->clean_params($value);
+				}
+				else
+				{
+					$cleaned[$key] = ($value);
+				}
 			}
 		}
 		return $cleaned;
